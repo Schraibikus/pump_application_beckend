@@ -8,10 +8,10 @@ export interface Product {
   path: string;
   name: string;
   drawing: number;
-  parts: LinkItem[];
+  parts: PartItem[];
 }
 
-export interface LinkItem {
+export interface PartItem {
   id: number;
   position: number;
   name: string;
