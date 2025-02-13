@@ -1,6 +1,21 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
-import { threePlungerPumpLinks, connectingRodLinks, tractionUnitLinks, waterworksLinks, collectorLinks, valveLinks, valveTwoLinks, plungerSealLinks, sealPackageLinks, housingSealLinks, installingTheSensorIndicatorLinks, installingTheSensorIndicatorTwoLinks, plungerLubricationSystemLinks, pumpLubricationSystemLinks } from "./constants.js";
+import {
+  threePlungerPumpLinks,
+  connectingRodLinks,
+  tractionUnitLinks,
+  waterworksLinks,
+  collectorLinks,
+  valveLinks,
+  valveTwoLinks,
+  plungerSealLinks,
+  sealPackageLinks,
+  housingSealLinks,
+  installingTheSensorIndicatorLinks,
+  installingTheSensorIndicatorTwoLinks,
+  plungerLubricationSystemLinks,
+  pumpLubricationSystemLinks,
+} from "./constants.js";
 
 dotenv.config();
 
@@ -17,7 +32,7 @@ async function setupDatabase() {
   try {
     console.log("Создаём таблицы...");
 
-    // Создание таблицы products
+    // 🔹 Таблица продуктов
     await connection.query(`
       CREATE TABLE IF NOT EXISTS products (
         id INT PRIMARY KEY,
@@ -29,16 +44,16 @@ async function setupDatabase() {
       )
     `);
 
-    // Создание таблицы parts
+    // 🔹 Таблица деталей (частей)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS parts (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        product_id INT,
-        position INT,
-        name VARCHAR(255),
+        product_id INT NOT NULL,
+        position INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
         designation VARCHAR(255) NULL,
         description TEXT NULL,
-        quantity INT NULL,
+        quantity INT NOT NULL DEFAULT 1,
         drawing INT NULL,
         positioning_top INT NULL,
         positioning_left INT NULL,
@@ -54,34 +69,74 @@ async function setupDatabase() {
       )
     `);
 
+    // 🔹 Таблица заказов
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS orders (
+        order_id INT PRIMARY KEY AUTO_INCREMENT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // 🔹 Таблица связи заказов и деталей
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS order_parts (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        order_id INT NOT NULL,
+        part_id INT NOT NULL,
+        quantity INT NOT NULL DEFAULT 1,
+        product_id INT NOT NULL, 
+        FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE,
+        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+      )
+    `);
+
     console.log("Добавляем данные...");
 
-    // Массив всех продуктов
-    const products = [threePlungerPumpLinks, connectingRodLinks, tractionUnitLinks, waterworksLinks, collectorLinks, valveLinks, valveTwoLinks, plungerSealLinks, sealPackageLinks, housingSealLinks, installingTheSensorIndicatorLinks, installingTheSensorIndicatorTwoLinks, plungerLubricationSystemLinks, pumpLubricationSystemLinks];
+    // 🔹 Массив всех продуктов
+    const products = [
+      threePlungerPumpLinks,
+      connectingRodLinks,
+      tractionUnitLinks,
+      waterworksLinks,
+      collectorLinks,
+      valveLinks,
+      valveTwoLinks,
+      plungerSealLinks,
+      sealPackageLinks,
+      housingSealLinks,
+      installingTheSensorIndicatorLinks,
+      installingTheSensorIndicatorTwoLinks,
+      plungerLubricationSystemLinks,
+      pumpLubricationSystemLinks,
+    ];
 
-    // Вставка всех products за один SQL-запрос
+    // 🔹 Вставка всех products
     const productValues = products
       .map(
         (product) =>
-          `(${product.id}, '${product.src}', '${product.path}', ${product.width}, '${product.name}', ${
-            product.drawing ?? "NULL"
-          })`
+          `(${product.id}, '${product.src}', '${product.path}', ${
+            product.width
+          }, '${product.name}', ${product.drawing ?? "NULL"})`
       )
       .join(",");
 
-    const productQuery = `
-      INSERT INTO products (id, src, path, width, name, drawing) 
-      VALUES ${productValues}
-      ON DUPLICATE KEY UPDATE 
-        src = VALUES(src), 
-        path = VALUES(path), 
-        width = VALUES(width), 
-        name = VALUES(name), 
-        drawing = VALUES(drawing)`;
+    if (productValues.length > 0) {
+      const productQuery = `
+        INSERT INTO products (id, src, path, width, name, drawing) 
+        VALUES ${productValues}
+        ON DUPLICATE KEY UPDATE 
+          src = VALUES(src), 
+          path = VALUES(path), 
+          width = VALUES(width), 
+          name = VALUES(name), 
+          drawing = VALUES(drawing)
+      `;
 
-    await connection.query(productQuery);
+      await connection.query(productQuery);
+    }
 
-    // Вставка всех parts за один SQL-запрос
+    // 🔹 Вставка всех parts
     const parts = products.flatMap((product) =>
       product.parts.map((part) => ({
         product_id: product.id,
@@ -96,11 +151,21 @@ async function setupDatabase() {
             `(${part.product_id}, ${part.position}, '${part.name}', ${
               part.designation ? `'${part.designation}'` : "NULL"
             }, ${part.quantity ?? "NULL"}, ${part.drawing ?? "NULL"}, 
-            ${part.positioning_top ?? "NULL"}, ${part.positioning_left ?? "NULL"},
-            ${part.positioning_top2 ?? "NULL"}, ${part.positioning_left2 ?? "NULL"},
-            ${part.positioning_top3 ?? "NULL"}, ${part.positioning_left3 ?? "NULL"},
-            ${part.positioning_top4 ?? "NULL"}, ${part.positioning_left4 ?? "NULL"},
-            ${part.positioning_top5 ?? "NULL"}, ${part.positioning_left5 ?? "NULL"})`
+            ${part.positioning_top ?? "NULL"}, ${
+              part.positioning_left ?? "NULL"
+            },
+            ${part.positioning_top2 ?? "NULL"}, ${
+              part.positioning_left2 ?? "NULL"
+            },
+            ${part.positioning_top3 ?? "NULL"}, ${
+              part.positioning_left3 ?? "NULL"
+            },
+            ${part.positioning_top4 ?? "NULL"}, ${
+              part.positioning_left4 ?? "NULL"
+            },
+            ${part.positioning_top5 ?? "NULL"}, ${
+              part.positioning_left5 ?? "NULL"
+            })`
         )
         .join(",");
 
@@ -125,7 +190,8 @@ async function setupDatabase() {
           positioning_top4 = VALUES(positioning_top4), 
           positioning_left4 = VALUES(positioning_left4), 
           positioning_top5 = VALUES(positioning_top5), 
-          positioning_left5 = VALUES(positioning_left5)`;
+          positioning_left5 = VALUES(positioning_left5)
+      `;
 
       await connection.query(partQuery);
     }

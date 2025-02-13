@@ -10,6 +10,9 @@ export const threePlungerPumpLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 1,
       name: "Шатун",
       designation: "СИН32.02.102.000",
@@ -20,6 +23,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 2,
       name: "Вал коленчатый",
       designation: "СИН32.02.103.000",
@@ -29,6 +35,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 3,
       name: "Шпилька",
       designation: "СИН32.01.100.007",
@@ -38,6 +47,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 5,
       name: "Уплотнение корпуса",
       description: "(до №3694)",
@@ -47,6 +59,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 7,
       name: "Крышка",
       quantity: 1,
@@ -55,6 +70,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 8,
       name: "Шпилька",
       designation: "СИН32.02.100.005",
@@ -64,6 +82,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 9,
       name: "Крейцкопф",
       designation: "СИН32.02.100.007",
@@ -73,6 +94,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 10,
       name: "Палец крейцкопфа",
       designation: "СИН32.02.100.008",
@@ -82,6 +106,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 11,
       name: "Планка",
       designation: "СИН32.02.100.009",
@@ -91,6 +118,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 10,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 12,
       name: "Пластина",
       designation: "СИН32.02.100.011",
@@ -100,6 +130,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 11,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 13,
       name: "Шпилька",
       designation: "СИН32.02.100.012",
@@ -109,6 +142,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 12,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 14,
       name: "Крышка",
       designation: "СИН32.02.100.014",
@@ -118,6 +154,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 13,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 15,
       name: "Гайка",
       designation: "СИН32.02.100.015",
@@ -127,6 +166,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 14,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 16,
       name: "Кольцо опорное",
       designation: "СИН32.02.100.016",
@@ -136,6 +178,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 15,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 18,
       name: "Пружина",
       designation: "СИН32.02.103.002",
@@ -145,15 +190,21 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 16,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 19, //нет описания
       name: "Нет описания",
       designation: "Нет описания",
-      // quantity: 24,
+      quantity: 1,
       positioning_top: 12,
       positioning_left: 16,
     },
     {
       id: 17,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 20,
       name: "Втулка",
       designation: "СИН38.01.008",
@@ -163,6 +214,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 18,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 22,
       name: "Втулка",
       designation: "СИН51.00.100.016-02",
@@ -172,6 +226,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 19,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 23,
       name: "Коллектор",
       designation: "СИН63.01.100.034",
@@ -181,6 +238,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 20,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 24,
       name: "Болт",
       designation: "СИН32.02.108.100",
@@ -191,6 +251,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 21,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 26,
       name: "Винт",
       description: "А М8-6gx25.45Н.40Х.05 ГОСТ 11075-93",
@@ -200,6 +263,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 22,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 27,
       name: "Винт",
       description: "М8-8gx20.58.019 ГОСТ 11738-84",
@@ -209,6 +275,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 23,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 28,
       name: "Гайка",
       description: "М8-6Н.5NF ГОСТ Р 50273-92",
@@ -218,6 +287,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 24,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 29,
       name: "Кольцо",
       description: "В40 ГОСТ 13943-86",
@@ -227,6 +299,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 25,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 30,
       name: "Манжета",
       description: "1.1-20х40-3 ГОСТ 8752-79",
@@ -236,6 +311,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 26,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 31,
       name: "Подшипник",
       description: "3530 ГОСТ 5721-75 (применяется с насоса зав. №3271)",
@@ -247,6 +325,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 27,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 32,
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
@@ -256,6 +337,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 28,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 33,
       name: "Установка индуктивного датчика",
       description: "(до №3651)",
@@ -265,6 +349,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 29,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 34,
       name: "Установка индуктивного датчика",
       description: "(с №3651)",
@@ -274,6 +361,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 30,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 36,
       name: "Кран шаровой с метр. патр.",
       description: 'G 3/4"',
@@ -283,6 +373,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 31,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 37,
       name: "Кран шаровой",
       description: 'G 3/4"',
@@ -292,6 +385,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 32,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 38,
       name: "Крышка расширительного бочка",
       description: "Газель СБ 3302-1311065",
@@ -301,6 +397,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 33,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 39,
       name: "Ниппель нар.",
       description: '-нар. 20 (3/4")',
@@ -310,6 +409,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 34,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 40,
       name: "Пробка нар.",
       description: 'G 3/4"',
@@ -319,6 +421,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 35,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 41,
       name: "Резьбовая заглушка",
       description: "М22х1,5 DIN 906",
@@ -328,6 +433,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 36,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 42,
       name: "Штуцер нар.",
       description: 'G 3/4"х20 мм',
@@ -337,6 +445,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 37,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 44,
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=860 мм",
@@ -346,6 +457,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 38,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 45,
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=1700 мм",
@@ -355,6 +469,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 39,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 48,
       name: "Узел тяги",
       designation: "Переменные данные",
@@ -366,6 +483,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 40,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 49,
       name: "Гидроузел",
       designation: "Переменные данные",
@@ -377,6 +497,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 41,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 50,
       name: "Корпус",
       designation: "Переменные данные",
@@ -387,6 +510,9 @@ export const threePlungerPumpLinks: Product = {
     },
     {
       id: 42,
+      parentProductId: 1,
+      productDrawing: 1,
+      productName: "Насос трехплунжерный СИН32.02.100.000",
       position: 51,
       name: "Плунжер",
       designation: "Переменные данные",
@@ -408,6 +534,9 @@ export const connectingRodLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 1,
       name: "Шатун",
       designation: "СИН32.02.102.001",
@@ -417,6 +546,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 2,
       name: "Крышка шатуна",
       designation: "СИН32.02.102.002",
@@ -426,6 +558,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 3,
       name: "Втулка",
       designation: "СИН32.02.102.003",
@@ -435,6 +570,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 4,
       name: "Втулка",
       designation: "СИН32.02.102.004",
@@ -444,6 +582,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 5,
       name: "Штифт",
       designation: "СИН61.00.102.007",
@@ -453,6 +594,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 6,
       name: "Доработка вкладыша",
       designation: "СИН32.02.102.005",
@@ -462,6 +606,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 7,
       name: "Доработка вкладыша",
       designation: "СИН32.02.102.006",
@@ -471,6 +618,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 8,
       name: "Жиклер",
       designation: "СИН32.02.102.007",
@@ -480,16 +630,22 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 9, //нет описания
       name: "Нет описания",
       designation: "Нет описания",
       description: "Нет описания",
-      // quantity: 1,
+      quantity: 1,
       positioning_top: 61,
       positioning_left: 95,
     },
     {
       id: 10,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 10,
       name: "Винт",
       description: "М10-6gx16.45Н.40Х.05 ГОСТ 11075-93",
@@ -499,6 +655,9 @@ export const connectingRodLinks: Product = {
     },
     {
       id: 11,
+      parentProductId: 2,
+      productDrawing: 2,
+      productName: "Шатун СИН32.02.102.000",
       position: 11,
       name: "Винт",
       description: "М16х1,5-6gx90.12.9 DIN 912",
@@ -519,6 +678,9 @@ export const tractionUnitLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 3,
+      productDrawing: 3,
+      productName: "Узел тяги",
       position: 1,
       name: "Тяга",
       designation: "Переменные данные",
@@ -529,6 +691,9 @@ export const tractionUnitLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 3,
+      productDrawing: 3,
+      productName: "Узел тяги",
       position: 2,
       name: "Штифт",
       designation: "Переменные данные",
@@ -539,6 +704,9 @@ export const tractionUnitLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 3,
+      productDrawing: 3,
+      productName: "Узел тяги",
       position: 3,
       name: "Упор",
       designation: "Переменные данные",
@@ -549,6 +717,9 @@ export const tractionUnitLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 3,
+      productDrawing: 3,
+      productName: "Узел тяги",
       position: 4,
       name: "Футорка",
       designation: "Переменные данные",
@@ -570,6 +741,9 @@ export const waterworksLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Узел тяги",
       position: 1,
       name: "Крышка",
       designation: "СИН63.00.108.100",
@@ -579,6 +753,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 2,
       name: "Опора",
       designation: "СИН32.02.108.300",
@@ -588,6 +765,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 3, // две 3 позиции
       name: "Коробка клапанная",
       designation: "СИН32.02.109.001",
@@ -599,6 +779,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 4,
       name: "Втулка",
       designation: "СИН32.02.109.003",
@@ -610,6 +793,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 5,
       name: "Кольцо",
       designation: "СИН63.00.108.004",
@@ -621,6 +807,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 6,
       name: "Крышка",
       designation: "СИН63.00.108.005",
@@ -630,6 +819,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 7,
       name: "Манжета",
       designation: "СИН63.00.108.006",
@@ -641,6 +833,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 8,
       name: "Пружина",
       designation: "СИН63.00.110.004",
@@ -652,6 +847,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 9,
       name: "Кольцо",
       designation: "СИН32.02.109.004",
@@ -663,6 +861,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 10,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 10,
       name: "Кольцо",
       description: "135-145-46-2-3 ГОСТ 18829-73/ГОСТ 9833-73",
@@ -672,6 +873,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 11,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 11,
       name: "Манжета",
       designation: "СИН32.02.108.002",
@@ -683,6 +887,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 12,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 12,
       name: "Кольцо",
       description: "100-108-46-2-4 ГОСТ 18829-73/ГОСТ 9833-73",
@@ -694,6 +901,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 13,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 13,
       name: "Уплотнение плунжера",
       designation: "Переменные данные",
@@ -704,6 +914,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 14,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 14,
       name: "Клапан",
       designation: "СИН32.00.108.600",
@@ -715,6 +928,9 @@ export const waterworksLinks: Product = {
     },
     {
       id: 15,
+      parentProductId: 4,
+      productDrawing: 4,
+      productName: "Гидроузел СИН32.02.109.000 с насоса №3454",
       position: 15,
       name: "Седло",
       designation: "СИН63.01.108.800",
@@ -737,6 +953,9 @@ export const collectorLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 1,
       name: "Корпус коллектора",
       designation: "СИН32.02.108.110",
@@ -746,6 +965,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 2,
       name: "Заглушка",
       designation: "СИН32.02.108.101",
@@ -755,6 +977,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 3,
       name: "Прокладка",
       designation: "СИН32.02.108.102",
@@ -765,6 +990,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 4,
       name: "Заглушка",
       designation: "СИН31.00.01.150.002",
@@ -774,6 +1002,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 5,
       name: "Болт",
       description: "М12-8gx40.58.019 ГОСТ 7798-70",
@@ -783,6 +1014,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 6,
       name: "Гайка",
       description: "М12-7Н.8.019 ГОСТ 5915-70",
@@ -792,6 +1026,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 7,
       name: "Кольцо",
       description: "145-155-46-2-4 ГОСТ 9833-73 / ГОСТ 18829-73",
@@ -801,6 +1038,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 8,
       name: "Шайба",
       description: "12.03.019 ГОСТ11371-78",
@@ -810,6 +1050,9 @@ export const collectorLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 5,
+      productDrawing: 5,
+      productName: "Коллектор СИН32.02.108.100",
       position: 9,
       name: "Шайба",
       description: "12.65Г.019 ГОСТ 6402-70",
@@ -830,6 +1073,9 @@ export const valveLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 6,
+      productDrawing: 6,
+      productName: "Клапан СИН32.00.108.600",
       position: 1,
       name: "Клапан",
       designation: "СИН32.00.108.600",
@@ -850,6 +1096,9 @@ export const valveTwoLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 7,
+      productDrawing: 7,
+      productName: "Клапан СИН63.00.108.600",
       position: 1,
       name: "Корпус клапана",
       designation: "СИН63.00.108.601",
@@ -859,6 +1108,9 @@ export const valveTwoLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 7,
+      productDrawing: 7,
+      productName: "Клапан СИН63.00.108.600",
       position: 2,
       name: "Прокладка",
       designation: "СИН63.00.108.603",
@@ -879,6 +1131,9 @@ export const plungerSealLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 1,
       name: "Гайка",
       designation: "Переменные данные",
@@ -888,6 +1143,9 @@ export const plungerSealLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 2,
       name: "Втулка",
       designation: "Переменные данные",
@@ -897,6 +1155,9 @@ export const plungerSealLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 3,
       name: "Пакет уплотнений",
       designation: "Переменные данные",
@@ -906,6 +1167,9 @@ export const plungerSealLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 4,
       name: "Стакан",
       designation: "Переменные данные",
@@ -915,6 +1179,9 @@ export const plungerSealLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 5,
       name: "Манжета",
       designation: "Переменные данные",
@@ -924,6 +1191,9 @@ export const plungerSealLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 8,
+      productDrawing: 8,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 6,
       name: "Кольцо",
       description: "175-185-46-2-4 ГОСТ 9833-73/ГОСТ 18829-73",
@@ -944,6 +1214,9 @@ export const sealPackageLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 9,
+      productDrawing: 9,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 1,
       name: "Манжета",
       designation: "Переменные данные",
@@ -953,6 +1226,9 @@ export const sealPackageLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 9,
+      productDrawing: 9,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 2,
       name: "Кольцо",
       description: "120-125-30-2-4 ГОСТ 9833-73/ГОСТ 18829-73",
@@ -962,6 +1238,9 @@ export const sealPackageLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 9,
+      productDrawing: 9,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 3,
       name: "Кольцо",
       designation: "Переменные данные",
@@ -971,6 +1250,9 @@ export const sealPackageLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 9,
+      productDrawing: 9,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 4,
       name: "Манжета",
       designation: "Переменные данные",
@@ -980,6 +1262,9 @@ export const sealPackageLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 9,
+      productDrawing: 9,
+      productName: "Уплотнение плунжера СИН32.02.108.500",
       position: 5,
       name: "Кольцо",
       designation: "Переменные данные",
@@ -1000,15 +1285,21 @@ export const housingSealLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 1,
       name: "Шнур",
       description: "1-4 с Ø4 ГОСТ 6467-79 (L=860мм)",
-      // quantity: 3,
+      quantity: 1,
       positioning_top: -1,
       positioning_left: 24,
     },
     {
       id: 2,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 2,
       name: "Фланец",
       designation: "СИН32.02.100.003",
@@ -1018,6 +1309,9 @@ export const housingSealLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 3,
       name: "Кольцо",
       designation: "СИН63.00.104.001",
@@ -1027,6 +1321,9 @@ export const housingSealLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 4,
       name: "Шайба",
       description: "8.65Г.019 ГОСТ6402-70",
@@ -1036,6 +1333,9 @@ export const housingSealLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 5,
       name: "Шайба",
       description: "8.03.019 ГОСТ 11371-78",
@@ -1045,6 +1345,9 @@ export const housingSealLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 6,
       name: "Болт",
       description: "М8-8gx25.58.019 ГОСТ 7798-70",
@@ -1054,6 +1357,9 @@ export const housingSealLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 10,
+      productDrawing: 10,
+      productName: "Уплотнение корпуса",
       position: 7,
       name: "Чехол",
       designation: "СИН32.02.100.004",
@@ -1074,6 +1380,9 @@ export const installingTheSensorIndicatorLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 1,
       name: "Крышка",
       designation: "СИН32.02.106.001",
@@ -1083,6 +1392,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 2,
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=800 мм",
@@ -1092,6 +1404,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 3,
       name: "Шайба",
       description: "16.03.019 ГОСТ 11371-78",
@@ -1101,6 +1416,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 4,
       name: "Шайба",
       description: "16.65Г.019 ГОСТ 6402-70",
@@ -1110,6 +1428,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 5,
       name: "Болт",
       description: "М16-8gх50.58.019 ГОСТ 7798-70",
@@ -1119,6 +1440,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 6,
       name: "Индуктивный выключатель",
       description: "ISNFC2A-32 P-4LS4 + гайка",
@@ -1128,6 +1452,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 7,
       name: "Штуцер",
       designation: "СИН46.02.200.003",
@@ -1137,6 +1464,9 @@ export const installingTheSensorIndicatorLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 11,
+      productDrawing: 11,
+      productName: "Установка индикатора датчика (до №3651)",
       position: 8,
       name: "Заглушка",
       description: "S2610 1/2",
@@ -1157,6 +1487,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 1,
       name: "Крышка",
       designation: "СИН32.02.106.101",
@@ -1166,6 +1499,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 2,
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=800 мм",
@@ -1175,6 +1511,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 3,
       name: "Кольцо",
       description: "А20 ГОСТ 13942-86",
@@ -1184,6 +1523,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 4,
       name: "Кольцо",
       description: "016-020-25-2-3",
@@ -1193,6 +1535,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 5,
       name: "Штуцер",
       designation: "СИН32.02.106.102",
@@ -1202,6 +1547,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 6,
       name: "Индуктивный выключатель",
       description: "ISNFC2A-32 P-4LS4 + гайка",
@@ -1211,6 +1559,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 7,
       name: "Винт",
       description: "М8-8gх20.58.019 ГОСТ 11738-84",
@@ -1220,6 +1571,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 8,
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
@@ -1229,6 +1583,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 9,
       name: "Втулка",
       designation: "СИН51.00.100.016-02",
@@ -1238,6 +1595,9 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
     },
     {
       id: 10,
+      parentProductId: 12,
+      productDrawing: 12,
+      productName: "Установка индикатора датчика (с №3651)",
       position: 10,
       name: "Заглушка",
       description: "S2610 1/2",
@@ -1258,6 +1618,9 @@ export const plungerLubricationSystemLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 1,
       name: "Кронштейн",
       designation: "СИН32.02.104.001",
@@ -1267,6 +1630,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 2,
       name: "Переходник",
       designation: "СИН32.04.100.05.10.002",
@@ -1276,6 +1642,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 3,
       name: "Доработка бака",
       designation: "СИН32.04.100.05.10.007",
@@ -1285,6 +1654,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 4,
       name: "Дроссель",
       designation: "СИН32.04.100.05.10.009",
@@ -1294,6 +1666,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 5,
       name: "Болт",
       description: "М8-8gx35.58.019 ГОСТ 7798-70",
@@ -1303,6 +1678,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 6,
       name: "Гайка",
       description: "М8-7Н.8.019 ГОСТ 5915-70",
@@ -1314,6 +1692,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 7,
       name: "Гайка",
       description: "М16-7Н.8.019 ГОСТ 5915-70",
@@ -1323,6 +1704,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 8,
       name: "Шайба",
       description: "8.03.019 ГОСТ 11371-78",
@@ -1332,6 +1716,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 9,
       name: "Шайба",
       description: "16.65Г.019 ГОСТ 6402-70",
@@ -1341,6 +1728,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 10,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 10,
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
@@ -1350,6 +1740,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 11,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 11,
       name: "Шпилька",
       description: "М8-8gx25.58.019 ГОСТ 22036-76",
@@ -1359,6 +1752,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 12,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 12,
       name: "Колпачок",
       description: "6708 8",
@@ -1376,6 +1772,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 13,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 13,
       name: "Кран шаровой муфтовый",
       description: "Dу15",
@@ -1387,6 +1786,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 14,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 14,
       name: "Крышка расширительного бочка",
       description: "Газель СБ 3302-1311065",
@@ -1396,6 +1798,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 15,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 15,
       name: "Фитинг",
       description: "2033 1/4",
@@ -1405,6 +1810,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 16,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 16,
       name: "Фитинг",
       description: "2511 1/4",
@@ -1414,6 +1822,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 17,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 17,
       name: "Фитинг",
       description: "2531 1/2-1/4",
@@ -1425,6 +1836,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 18,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 18,
       name: "Фитинг",
       description: "S6520 8-1/4",
@@ -1442,6 +1856,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 19,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 19,
       name: 'Хомут сантехнический с гайкой М8, 3/4"',
       description: "(d25-28 мм)",
@@ -1451,6 +1868,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 20,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 20,
       name: "Трубка",
       description: "Мод. TRN 8/6, L=370 мм",
@@ -1460,6 +1880,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 21,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 21,
       name: "Трубка",
       description: "Мод. TRN 8/6, L=400 мм",
@@ -1469,6 +1892,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 22,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 22,
       name: "Трубка",
       description: "Мод. TRN 8/6, L=600 мм",
@@ -1478,6 +1904,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 23,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 23,
       name: "Трубка",
       description: "Мод. TRN 8/6, L=770 мм",
@@ -1487,6 +1916,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 24,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 24,
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=470 мм",
@@ -1496,6 +1928,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 25,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 25,
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=500 мм",
@@ -1505,6 +1940,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 26,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 26,
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=700 мм",
@@ -1514,6 +1952,9 @@ export const plungerLubricationSystemLinks: Product = {
     },
     {
       id: 27,
+      parentProductId: 13,
+      productDrawing: 13,
+      productName: "Система смазки плунжеров СИН32.02.104.000",
       position: 27,
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=870 мм",
@@ -1534,6 +1975,9 @@ export const pumpLubricationSystemLinks: Product = {
   parts: [
     {
       id: 1,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 1,
       name: "Кронштейн фильтра",
       designation: "СИН32.02.107.100",
@@ -1543,6 +1987,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 2,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 2,
       name: "Переходник",
       designation: "СИН32.02.107.001",
@@ -1552,6 +1999,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 3,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 3,
       name: "Болт",
       description: "М10-8gx20.58.019 ГОСТ 7798-70",
@@ -1561,6 +2011,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 4,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 4,
       name: "Винт",
       description: "М8-8gx20.58.019 ГОСТ 11738-84",
@@ -1570,6 +2023,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 5,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 5,
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
@@ -1579,6 +2035,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 6,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 6,
       name: "Шайба",
       description: "10.65Г.019 ГОСТ 6402-70",
@@ -1588,6 +2047,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 7,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 7,
       name: "Датчик аварийного давления масла",
       description: "ММ111В",
@@ -1597,6 +2059,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 8,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 8,
       name: "Заглушка",
       description: 'S2610 1/4"',
@@ -1606,6 +2071,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 9,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 9,
       name: "Пробка",
       description: 'G1/2"_ПБ 2100',
@@ -1615,6 +2083,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 10,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 10,
       name: "Проходник",
       description: 'М27х1,5 х К 3/4" СН 2737-2600',
@@ -1624,6 +2095,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 11,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 11,
       name: "Резинометаллическое кольцо",
       description: '(USIT) под G1/2"',
@@ -1633,6 +2107,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 12,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 12,
       name: "Рукав РВД",
       description: "16х13х900-11.90/11-М27х1,5/М27х1,5-УХЛ",
@@ -1642,6 +2119,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 13,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 13,
       name: "Рукав РВД",
       description: "16х13х1200-11.90/11.90-180-М27х1,5/М27х1,5-УХЛ",
@@ -1651,6 +2131,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 14,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 14,
       name: "Рукав РВД",
       description: "25х8,8х1200-11.90/11.90-М42х2/М42х2-УХЛ",
@@ -1660,6 +2143,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 15,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 15,
       name: "Фильтр",
       description: "2ФГМ32-40К",
@@ -1669,6 +2155,9 @@ export const pumpLubricationSystemLinks: Product = {
     },
     {
       id: 16,
+      parentProductId: 14,
+      productDrawing: 14,
+      productName: "Система смазки насоса СИН32.02.107.000",
       position: 16,
       name: "Фильтрующий элемент",
       description: "STR0704SG1 M90 P01",
