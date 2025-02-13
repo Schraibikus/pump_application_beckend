@@ -50,45 +50,51 @@ async function setupDatabase() {
     `);
         console.log("Добавляем данные...");
         // Вставка в products
-        await connection.query(`INSERT INTO products (id, src, path, width, name, drawing) VALUES (?, ?, ?, ?, ?, ?) 
-       ON DUPLICATE KEY UPDATE src=VALUES(src), path=VALUES(path), width=VALUES(width), name=VALUES(name), drawing=VALUES(drawing)`, [
+        await connection.query(
+          `INSERT INTO products (id, src, path, width, name, drawing) VALUES (?, ?, ?, ?, ?, ?)
+       ON DUPLICATE KEY UPDATE src=VALUES(src), path=VALUES(path), width=VALUES(width), name=VALUES(name), drawing=VALUES(drawing)`,
+          [
             pumpLubricationSystemLinks.id,
             pumpLubricationSystemLinks.src,
             pumpLubricationSystemLinks.path,
             pumpLubricationSystemLinks.width,
             pumpLubricationSystemLinks.name,
             pumpLubricationSystemLinks.drawing || null,
-        ]);
+          ]
+        );
         // Вставка деталей (parts)
         for (const part of pumpLubricationSystemLinks.parts) {
-            await connection.query(`INSERT INTO parts 
-        (product_id, position, name, designation, description, quantity, drawing, positioning_top, positioning_left, positioning_top2, positioning_left2, positioning_top3, positioning_left3, positioning_top4, positioning_left4, positioning_top5, positioning_left5) 
+          await connection.query(
+            `INSERT INTO parts
+        (product_id, position, name, designation, description, quantity, drawing, positioning_top, positioning_left, positioning_top2, positioning_left2, positioning_top3, positioning_left3, positioning_top4, positioning_left4, positioning_top5, positioning_left5)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE name=VALUES(name), designation=VALUES(designation), description=VALUES(description), 
-                                quantity=VALUES(quantity), drawing=VALUES(drawing), positioning_top=VALUES(positioning_top), 
-                                positioning_left=VALUES(positioning_left), positioning_top2=VALUES(positioning_top2), 
-                                positioning_left2=VALUES(positioning_left2), positioning_top3=VALUES(positioning_top3), 
-                                positioning_left3=VALUES(positioning_left3), positioning_top4=VALUES(positioning_top4), 
-                                positioning_left4=VALUES(positioning_left4), positioning_top5=VALUES(positioning_top5), 
-                                positioning_left5=VALUES(positioning_left5)`, [
-                pumpLubricationSystemLinks.id,
-                part.position,
-                part.name,
-                part.designation || null,
-                part.description || null,
-                part.quantity || null,
-                part.drawing || null,
-                part.positioning?.top || null,
-                part.positioning?.left || null,
-                part.positioning?.top2 || null,
-                part.positioning?.left2 || null,
-                part.positioning?.top3 || null,
-                part.positioning?.left3 || null,
-                part.positioning?.top4 || null,
-                part.positioning?.left4 || null,
-                part.positioning?.top5 || null,
-                part.positioning?.left5 || null,
-            ]);
+        ON DUPLICATE KEY UPDATE name=VALUES(name), designation=VALUES(designation), description=VALUES(description),
+                                quantity=VALUES(quantity), drawing=VALUES(drawing), positioning_top=VALUES(positioning_top),
+                                positioning_left=VALUES(positioning_left), positioning_top2=VALUES(positioning_top2),
+                                positioning_left2=VALUES(positioning_left2), positioning_top3=VALUES(positioning_top3),
+                                positioning_left3=VALUES(positioning_left3), positioning_top4=VALUES(positioning_top4),
+                                positioning_left4=VALUES(positioning_left4), positioning_top5=VALUES(positioning_top5),
+                                positioning_left5=VALUES(positioning_left5)`,
+            [
+              pumpLubricationSystemLinks.id,
+              part.position,
+              part.name,
+              part.designation || null,
+              part.description || null,
+              part.quantity || null,
+              part.drawing || null,
+              part.positioning_top ?? null,
+              part.positioning_left ?? null,
+              part.positioning_top2 ?? null,
+              part.positioning_left2 ?? null,
+              part.positioning_top3 ?? null,
+              part.positioning_left3 ?? null,
+              part.positioning_top4 ?? null,
+              part.positioning_left4 ?? null,
+              part.positioning_top5 ?? null,
+              part.positioning_left5 ?? null,
+            ]
+          );
         }
         console.log("Данные успешно загружены!");
     }

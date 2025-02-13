@@ -19,16 +19,14 @@ export interface PartItem {
   designation?: string;
   quantity?: number;
   drawing?: number;
-  positioning: {
-    top?: number | string;
-    left?: number | string;
-    top2?: number | string;
-    left2?: number | string;
-    top3?: number | string;
-    left3?: number | string;
-    top4?: number | string;
-    left4?: number | string;
-    top5?: number | string;
-    left5?: number | string;
-  };
+  positioning_top?: number | string;
+  positioning_left?: number | string;
+  positioning_top2?: number | string;
+  positioning_left2?: number | string;
+  positioning_top3?: number | string;
+  positioning_left3?: number | string;
+  positioning_top4?: number | string;
+  positioning_left4?: number | string;
+  positioning_top5?: number | string;
+  positioning_left5?: number | string;
 }

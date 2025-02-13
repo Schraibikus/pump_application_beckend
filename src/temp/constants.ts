@@ -1,10 +1,5 @@
 import { Product } from "./types.js";
 
-const threePlungerPumpPositioningTop = -1;
-const threePlungerPumpPositioningRight = 82;
-const threePlungerPumpPositioningBottom = 93;
-const threePlungerPumpPositioningLeft = 16;
-
 export const threePlungerPumpLinks: Product = {
   id: 1,
   src: "/png/threePlungerPump.png",
@@ -20,10 +15,8 @@ export const threePlungerPumpLinks: Product = {
       designation: "СИН32.02.102.000",
       quantity: 3,
       drawing: 2,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 33,
-      },
+      positioning_top: -1,
+      positioning_left: 33,
     },
     {
       id: 2,
@@ -31,10 +24,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Вал коленчатый",
       designation: "СИН32.02.103.000",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 30,
-      },
+      positioning_top: -1,
+      positioning_left: 30,
     },
     {
       id: 3,
@@ -42,10 +33,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шпилька",
       designation: "СИН32.01.100.007",
       quantity: 4,
-      positioning: {
-        top: 28,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 28,
+      positioning_left: 82,
     },
     {
       id: 4,
@@ -53,20 +42,16 @@ export const threePlungerPumpLinks: Product = {
       name: "Уплотнение корпуса",
       description: "(до №3694)",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 77,
-      },
+      positioning_top: 93,
+      positioning_left: 77,
     },
     {
       id: 5,
       position: 7,
       name: "Крышка",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 24,
-      },
+      positioning_top: 93,
+      positioning_left: 24,
     },
     {
       id: 6,
@@ -74,10 +59,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шпилька",
       designation: "СИН32.02.100.005",
       quantity: 12,
-      positioning: {
-        top: 22,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 22,
+      positioning_left: 82,
     },
     {
       id: 7,
@@ -85,10 +68,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Крейцкопф",
       designation: "СИН32.02.100.007",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 46,
-      },
+      positioning_top: -1,
+      positioning_left: 46,
     },
     {
       id: 8,
@@ -96,10 +77,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Палец крейцкопфа",
       designation: "СИН32.02.100.008",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 50,
-      },
+      positioning_top: -1,
+      positioning_left: 50,
     },
     {
       id: 9,
@@ -107,10 +86,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Планка",
       designation: "СИН32.02.100.009",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 55,
-      },
+      positioning_top: -1,
+      positioning_left: 55,
     },
     {
       id: 10,
@@ -118,10 +95,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Пластина",
       designation: "СИН32.02.100.011",
       quantity: 6,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 59,
-      },
+      positioning_top: -1,
+      positioning_left: 59,
     },
     {
       id: 11,
@@ -129,10 +104,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шпилька",
       designation: "СИН32.02.100.012",
       quantity: 4,
-      positioning: {
-        top: 41,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 41,
+      positioning_left: 82,
     },
     {
       id: 12,
@@ -140,10 +113,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Крышка",
       designation: "СИН32.02.100.014",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 53,
-      },
+      positioning_top: 93,
+      positioning_left: 53,
     },
     {
       id: 13,
@@ -151,10 +122,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Гайка",
       designation: "СИН32.02.100.015",
       quantity: 12,
-      positioning: {
-        top: 13,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 13,
+      positioning_left: 82,
     },
     {
       id: 14,
@@ -162,10 +131,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Кольцо опорное",
       designation: "СИН32.02.100.016",
       quantity: 1,
-      positioning: {
-        top: 30,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 30,
+      positioning_left: 16,
     },
     {
       id: 15,
@@ -173,10 +140,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Пружина",
       designation: "СИН32.02.103.002",
       quantity: 2,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 67,
-      },
+      positioning_top: 93,
+      positioning_left: 67,
     },
     {
       id: 16,
@@ -184,10 +149,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Нет описания",
       designation: "Нет описания",
       // quantity: 24,
-      positioning: {
-        top: 12,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 12,
+      positioning_left: 16,
     },
     {
       id: 17,
@@ -195,10 +158,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Втулка",
       designation: "СИН38.01.008",
       quantity: 24,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 28,
-      },
+      positioning_top: 93,
+      positioning_left: 28,
     },
     {
       id: 18,
@@ -206,10 +167,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Втулка",
       designation: "СИН51.00.100.016-02",
       quantity: 2,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 62,
-      },
+      positioning_top: 93,
+      positioning_left: 62,
     },
     {
       id: 19,
@@ -217,10 +176,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Коллектор",
       designation: "СИН63.01.100.034",
       quantity: 1,
-      positioning: {
-        top: 64,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 64,
+      positioning_left: 82,
     },
     {
       id: 20,
@@ -229,10 +186,8 @@ export const threePlungerPumpLinks: Product = {
       designation: "СИН32.02.108.100",
       description: "М12-8gx20.58.019 ГОСТ 7798-70",
       quantity: 12,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 63,
-      },
+      positioning_top: -1,
+      positioning_left: 63,
     },
     {
       id: 21,
@@ -240,10 +195,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Винт",
       description: "А М8-6gx25.45Н.40Х.05 ГОСТ 11075-93",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 37,
-      },
+      positioning_top: -1,
+      positioning_left: 37,
     },
     {
       id: 22,
@@ -251,10 +204,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Винт",
       description: "М8-8gx20.58.019 ГОСТ 11738-84",
       quantity: 24,
-      positioning: {
-        top: 83,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 83,
+      positioning_left: 16,
     },
     {
       id: 23,
@@ -262,10 +213,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Гайка",
       description: "М8-6Н.5NF ГОСТ Р 50273-92",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 42,
-      },
+      positioning_top: -1,
+      positioning_left: 42,
     },
     {
       id: 24,
@@ -273,10 +222,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Кольцо",
       description: "В40 ГОСТ 13943-86",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: -1,
+      positioning_left: 16,
     },
     {
       id: 25,
@@ -284,10 +231,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Манжета",
       description: "1.1-20х40-3 ГОСТ 8752-79",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 19,
-      },
+      positioning_top: -1,
+      positioning_left: 19,
     },
     {
       id: 26,
@@ -295,12 +240,10 @@ export const threePlungerPumpLinks: Product = {
       name: "Подшипник",
       description: "3530 ГОСТ 5721-75 (применяется с насоса зав. №3271)",
       quantity: 2,
-      positioning: {
-        top: threePlungerPumpPositioningTop,
-        left: 25,
-        top2: threePlungerPumpPositioningBottom,
-        left2: 46,
-      },
+      positioning_top: -1,
+      positioning_left: 25,
+      positioning_top2: 93,
+      positioning_left2: 46,
     },
     {
       id: 27,
@@ -308,10 +251,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
       quantity: 24,
-      positioning: {
-        top: 88,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 88,
+      positioning_left: 16,
     },
     {
       id: 28,
@@ -319,10 +260,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Установка индуктивного датчика",
       description: "(до №3651)",
       quantity: 1,
-      positioning: {
-        top: 66,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 66,
+      positioning_left: 16,
     },
     {
       id: 29,
@@ -330,10 +269,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Установка индуктивного датчика",
       description: "(с №3651)",
       quantity: 1,
-      positioning: {
-        top: 71,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 71,
+      positioning_left: 16,
     },
     {
       id: 30,
@@ -341,10 +278,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Кран шаровой с метр. патр.",
       description: 'G 3/4"',
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 32,
-      },
+      positioning_top: 93,
+      positioning_left: 32,
     },
     {
       id: 31,
@@ -352,10 +287,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Кран шаровой",
       description: 'G 3/4"',
       quantity: 1,
-      positioning: {
-        top: 36,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 36,
+      positioning_left: 16,
     },
     {
       id: 32,
@@ -363,10 +296,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Крышка расширительного бочка",
       description: "Газель СБ 3302-1311065",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 42,
-      },
+      positioning_top: 93,
+      positioning_left: 42,
     },
     {
       id: 33,
@@ -374,10 +305,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Ниппель нар.",
       description: '-нар. 20 (3/4")',
       quantity: 1,
-      positioning: {
-        top: 41,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 41,
+      positioning_left: 16,
     },
     {
       id: 34,
@@ -385,10 +314,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Пробка нар.",
       description: 'G 3/4"',
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 57,
-      },
+      positioning_top: 93,
+      positioning_left: 57,
     },
     {
       id: 35,
@@ -396,10 +323,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Резьбовая заглушка",
       description: "М22х1,5 DIN 906",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 49,
-      },
+      positioning_top: 93,
+      positioning_left: 49,
     },
     {
       id: 36,
@@ -407,10 +332,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Штуцер нар.",
       description: 'G 3/4"х20 мм',
       quantity: 1,
-      positioning: {
-        top: 46,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 46,
+      positioning_left: 16,
     },
     {
       id: 37,
@@ -418,10 +341,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=860 мм",
       quantity: 1,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 71,
-      },
+      positioning_top: 93,
+      positioning_left: 71,
     },
     {
       id: 38,
@@ -429,10 +350,8 @@ export const threePlungerPumpLinks: Product = {
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=1700 мм",
       quantity: 3,
-      positioning: {
-        top: threePlungerPumpPositioningBottom,
-        left: 37,
-      },
+      positioning_top: 93,
+      positioning_left: 37,
     },
     {
       id: 39,
@@ -442,10 +361,8 @@ export const threePlungerPumpLinks: Product = {
       description: "Переменные данные",
       quantity: 3,
       drawing: 3,
-      positioning: {
-        top: 73,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 73,
+      positioning_left: 82,
     },
     {
       id: 40,
@@ -455,10 +372,8 @@ export const threePlungerPumpLinks: Product = {
       description: "Переменные данные",
       quantity: 3,
       drawing: 4,
-      positioning: {
-        top: 49,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 49,
+      positioning_left: 82,
     },
     {
       id: 41,
@@ -467,10 +382,8 @@ export const threePlungerPumpLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: 77,
-        left: threePlungerPumpPositioningLeft,
-      },
+      positioning_top: 77,
+      positioning_left: 16,
     },
     {
       id: 42,
@@ -479,18 +392,11 @@ export const threePlungerPumpLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 3,
-      positioning: {
-        top: 56,
-        left: threePlungerPumpPositioningRight,
-      },
+      positioning_top: 56,
+      positioning_left: 82,
     },
   ],
 };
-
-const connectingRodPositioningTop = -2;
-const connectingRodPositioningRight = 95;
-const connectingRodPositioningBottom = 89;
-const connectingRodPositioningLeft = 1;
 
 export const connectingRodLinks: Product = {
   id: 2,
@@ -506,10 +412,8 @@ export const connectingRodLinks: Product = {
       name: "Шатун",
       designation: "СИН32.02.102.001",
       quantity: 1,
-      positioning: {
-        top: 41,
-        left: connectingRodPositioningRight,
-      },
+      positioning_top: 41,
+      positioning_left: 95,
     },
     {
       id: 2,
@@ -517,10 +421,8 @@ export const connectingRodLinks: Product = {
       name: "Крышка шатуна",
       designation: "СИН32.02.102.002",
       quantity: 1,
-      positioning: {
-        top: connectingRodPositioningTop,
-        left: 50,
-      },
+      positioning_top: -2,
+      positioning_left: 50,
     },
     {
       id: 3,
@@ -528,10 +430,8 @@ export const connectingRodLinks: Product = {
       name: "Втулка",
       designation: "СИН32.02.102.003",
       quantity: 4,
-      positioning: {
-        top: connectingRodPositioningTop,
-        left: 60,
-      },
+      positioning_top: -2,
+      positioning_left: 60,
     },
     {
       id: 4,
@@ -539,10 +439,8 @@ export const connectingRodLinks: Product = {
       name: "Втулка",
       designation: "СИН32.02.102.004",
       quantity: 1,
-      positioning: {
-        top: connectingRodPositioningBottom,
-        left: 46,
-      },
+      positioning_top: 89,
+      positioning_left: 46,
     },
     {
       id: 5,
@@ -550,10 +448,8 @@ export const connectingRodLinks: Product = {
       name: "Штифт",
       designation: "СИН61.00.102.007",
       quantity: 1,
-      positioning: {
-        top: 18,
-        left: connectingRodPositioningLeft,
-      },
+      positioning_top: 18,
+      positioning_left: 1,
     },
     {
       id: 6,
@@ -561,10 +457,8 @@ export const connectingRodLinks: Product = {
       name: "Доработка вкладыша",
       designation: "СИН32.02.102.005",
       quantity: 1,
-      positioning: {
-        top: 49,
-        left: connectingRodPositioningLeft,
-      },
+      positioning_top: 49,
+      positioning_left: 1,
     },
     {
       id: 7,
@@ -572,10 +466,8 @@ export const connectingRodLinks: Product = {
       name: "Доработка вкладыша",
       designation: "СИН32.02.102.006",
       quantity: 1,
-      positioning: {
-        top: connectingRodPositioningBottom,
-        left: 38,
-      },
+      positioning_top: 89,
+      positioning_left: 38,
     },
     {
       id: 8,
@@ -583,10 +475,8 @@ export const connectingRodLinks: Product = {
       name: "Жиклер",
       designation: "СИН32.02.102.007",
       quantity: 1,
-      positioning: {
-        top: connectingRodPositioningTop,
-        left: 69,
-      },
+      positioning_top: -2,
+      positioning_left: 69,
     },
     {
       id: 9,
@@ -595,10 +485,8 @@ export const connectingRodLinks: Product = {
       designation: "Нет описания",
       description: "Нет описания",
       // quantity: 1,
-      positioning: {
-        top: 61,
-        left: connectingRodPositioningRight,
-      },
+      positioning_top: 61,
+      positioning_left: 95,
     },
     {
       id: 10,
@@ -606,10 +494,8 @@ export const connectingRodLinks: Product = {
       name: "Винт",
       description: "М10-6gx16.45Н.40Х.05 ГОСТ 11075-93",
       quantity: 1,
-      positioning: {
-        top: connectingRodPositioningBottom,
-        left: 80,
-      },
+      positioning_top: 89,
+      positioning_left: 80,
     },
     {
       id: 11,
@@ -617,15 +503,11 @@ export const connectingRodLinks: Product = {
       name: "Винт",
       description: "М16х1,5-6gx90.12.9 DIN 912",
       quantity: 4,
-      positioning: {
-        top: connectingRodPositioningTop,
-        left: 33,
-      },
+      positioning_top: -2,
+      positioning_left: 33,
     },
   ],
 };
-
-const tractionUnitPositioningTop = 3;
 
 export const tractionUnitLinks: Product = {
   id: 3,
@@ -642,10 +524,8 @@ export const tractionUnitLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: tractionUnitPositioningTop,
-        left: 15,
-      },
+      positioning_top: 3,
+      positioning_left: 15,
     },
     {
       id: 2,
@@ -654,10 +534,8 @@ export const tractionUnitLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: tractionUnitPositioningTop,
-        left: 63,
-      },
+      positioning_top: 3,
+      positioning_left: 63,
     },
     {
       id: 3,
@@ -666,10 +544,8 @@ export const tractionUnitLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 4,
-      positioning: {
-        top: tractionUnitPositioningTop,
-        left: 82,
-      },
+      positioning_top: 3,
+      positioning_left: 82,
     },
     {
       id: 4,
@@ -678,16 +554,11 @@ export const tractionUnitLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: tractionUnitPositioningTop,
-        left: 95,
-      },
+      positioning_top: 3,
+      positioning_left: 95,
     },
   ],
 };
-
-const waterworksPositioningRight = 89;
-const waterworksPositioningLeft = 2;
 
 export const waterworksLinks: Product = {
   id: 4,
@@ -703,10 +574,8 @@ export const waterworksLinks: Product = {
       name: "Крышка",
       designation: "СИН63.00.108.100",
       quantity: 3,
-      positioning: {
-        top: 0,
-        left: waterworksPositioningLeft,
-      },
+      positioning_top: 0,
+      positioning_left: 2,
     },
     {
       id: 2,
@@ -714,10 +583,8 @@ export const waterworksLinks: Product = {
       name: "Опора",
       designation: "СИН32.02.108.300",
       quantity: 3,
-      positioning: {
-        top: 76,
-        left: waterworksPositioningRight,
-      },
+      positioning_top: 76,
+      positioning_left: 89,
     },
     {
       id: 3,
@@ -725,12 +592,10 @@ export const waterworksLinks: Product = {
       name: "Коробка клапанная",
       designation: "СИН32.02.109.001",
       quantity: 3,
-      positioning: {
-        top: 53,
-        left: waterworksPositioningLeft,
-        top2: 4,
-        left2: waterworksPositioningRight,
-      },
+      positioning_top: 53,
+      positioning_left: 2,
+      positioning_top2: 4,
+      positioning_left2: 89,
     },
     {
       id: 4,
@@ -738,12 +603,10 @@ export const waterworksLinks: Product = {
       name: "Втулка",
       designation: "СИН32.02.109.003",
       quantity: 2,
-      positioning: {
-        top: 39,
-        left: waterworksPositioningLeft,
-        top2: 28,
-        left2: waterworksPositioningRight,
-      },
+      positioning_top: 39,
+      positioning_left: 2,
+      positioning_top2: 28,
+      positioning_left2: 89,
     },
     {
       id: 5,
@@ -751,12 +614,10 @@ export const waterworksLinks: Product = {
       name: "Кольцо",
       designation: "СИН63.00.108.004",
       quantity: 6,
-      positioning: {
-        top: 10,
-        left: waterworksPositioningLeft,
-        top2: 56,
-        left2: waterworksPositioningRight,
-      },
+      positioning_top: 10,
+      positioning_left: 2,
+      positioning_top2: 56,
+      positioning_left2: 89,
     },
     {
       id: 6,
@@ -764,10 +625,8 @@ export const waterworksLinks: Product = {
       name: "Крышка",
       designation: "СИН63.00.108.005",
       quantity: 3,
-      positioning: {
-        top: 36,
-        left: waterworksPositioningRight,
-      },
+      positioning_top: 36,
+      positioning_left: 89,
     },
     {
       id: 7,
@@ -775,12 +634,10 @@ export const waterworksLinks: Product = {
       name: "Манжета",
       designation: "СИН63.00.108.006",
       quantity: 6,
-      positioning: {
-        top: 61,
-        left: waterworksPositioningRight,
-        top2: 16,
-        left2: waterworksPositioningLeft,
-      },
+      positioning_top: 61,
+      positioning_left: 89,
+      positioning_top2: 16,
+      positioning_left2: 2,
     },
     {
       id: 8,
@@ -788,12 +645,10 @@ export const waterworksLinks: Product = {
       name: "Пружина",
       designation: "СИН63.00.110.004",
       quantity: 6,
-      positioning: {
-        top: 83,
-        left: waterworksPositioningRight,
-        top2: 22,
-        left2: waterworksPositioningLeft,
-      },
+      positioning_top: 83,
+      positioning_left: 89,
+      positioning_top2: 22,
+      positioning_left2: 2,
     },
     {
       id: 9,
@@ -801,12 +656,10 @@ export const waterworksLinks: Product = {
       name: "Кольцо",
       designation: "СИН32.02.109.004",
       quantity: 6,
-      positioning: {
-        top: 46,
-        left: waterworksPositioningLeft,
-        top2: 2,
-        left2: 65,
-      },
+      positioning_top: 46,
+      positioning_left: 2,
+      positioning_top2: 2,
+      positioning_left2: 65,
     },
     {
       id: 10,
@@ -814,10 +667,8 @@ export const waterworksLinks: Product = {
       name: "Кольцо",
       description: "135-145-46-2-3 ГОСТ 18829-73/ГОСТ 9833-73",
       quantity: 3,
-      positioning: {
-        top: 71,
-        left: waterworksPositioningRight,
-      },
+      positioning_top: 71,
+      positioning_left: 89,
     },
     {
       id: 11,
@@ -825,12 +676,10 @@ export const waterworksLinks: Product = {
       name: "Манжета",
       designation: "СИН32.02.108.002",
       quantity: 6,
-      positioning: {
-        top: 50,
-        left: waterworksPositioningLeft,
-        top2: 6,
-        left2: 55,
-      },
+      positioning_top: 50,
+      positioning_left: 2,
+      positioning_top2: 6,
+      positioning_left2: 55,
     },
     {
       id: 12,
@@ -838,12 +687,10 @@ export const waterworksLinks: Product = {
       name: "Кольцо",
       description: "100-108-46-2-4 ГОСТ 18829-73/ГОСТ 9833-73",
       quantity: 6,
-      positioning: {
-        top: 33,
-        left: waterworksPositioningLeft,
-        top2: 97,
-        left2: waterworksPositioningRight,
-      },
+      positioning_top: 33,
+      positioning_left: 2,
+      positioning_top2: 97,
+      positioning_left2: 89,
     },
     {
       id: 13,
@@ -852,10 +699,8 @@ export const waterworksLinks: Product = {
       designation: "Переменные данные",
       description: "Переменные данные",
       quantity: 3,
-      positioning: {
-        top: 59,
-        left: waterworksPositioningLeft,
-      },
+      positioning_top: 59,
+      positioning_left: 2,
     },
     {
       id: 14,
@@ -863,12 +708,10 @@ export const waterworksLinks: Product = {
       name: "Клапан",
       designation: "СИН32.00.108.600",
       quantity: 6,
-      positioning: {
-        top: 88,
-        left: waterworksPositioningRight,
-        top2: 26,
-        left2: waterworksPositioningLeft,
-      },
+      positioning_top: 88,
+      positioning_left: 89,
+      positioning_top2: 26,
+      positioning_left2: 2,
     },
     {
       id: 15,
@@ -876,17 +719,13 @@ export const waterworksLinks: Product = {
       name: "Седло",
       designation: "СИН63.01.108.800",
       quantity: 6,
-      positioning: {
-        top: 93,
-        left: waterworksPositioningRight,
-        top2: 29,
-        left2: waterworksPositioningLeft,
-      },
+      positioning_top: 93,
+      positioning_left: 89,
+      positioning_top2: 29,
+      positioning_left2: 2,
     },
   ],
 };
-
-const collectorPositioningBottom = 90;
 
 export const collectorLinks: Product = {
   id: 5,
@@ -902,10 +741,8 @@ export const collectorLinks: Product = {
       name: "Корпус коллектора",
       designation: "СИН32.02.108.110",
       quantity: 1,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 38,
-      },
+      positioning_top: 90,
+      positioning_left: 38,
     },
     {
       id: 2,
@@ -913,10 +750,8 @@ export const collectorLinks: Product = {
       name: "Заглушка",
       designation: "СИН32.02.108.101",
       quantity: 1,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 81,
-      },
+      positioning_top: 90,
+      positioning_left: 81,
     },
     {
       id: 3,
@@ -925,10 +760,8 @@ export const collectorLinks: Product = {
       designation: "СИН32.02.108.102",
       description: "пластина 2-МБС-М1-3 ГОСТ 7338-77 ø65",
       quantity: 3,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 53,
-      },
+      positioning_top: 90,
+      positioning_left: 53,
     },
     {
       id: 4,
@@ -936,10 +769,8 @@ export const collectorLinks: Product = {
       name: "Заглушка",
       designation: "СИН31.00.01.150.002",
       quantity: 3,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 45,
-      },
+      positioning_top: 90,
+      positioning_left: 45,
     },
     {
       id: 5,
@@ -947,10 +778,8 @@ export const collectorLinks: Product = {
       name: "Болт",
       description: "М12-8gx40.58.019 ГОСТ 7798-70",
       quantity: 4,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 62,
-      },
+      positioning_top: 90,
+      positioning_left: 62,
     },
     {
       id: 6,
@@ -958,10 +787,8 @@ export const collectorLinks: Product = {
       name: "Гайка",
       description: "М12-7Н.8.019 ГОСТ 5915-70",
       quantity: 4,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 89,
-      },
+      positioning_top: 90,
+      positioning_left: 89,
     },
     {
       id: 7,
@@ -969,10 +796,8 @@ export const collectorLinks: Product = {
       name: "Кольцо",
       description: "145-155-46-2-4 ГОСТ 9833-73 / ГОСТ 18829-73",
       quantity: 1,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 78,
-      },
+      positioning_top: 90,
+      positioning_left: 78,
     },
     {
       id: 8,
@@ -980,10 +805,8 @@ export const collectorLinks: Product = {
       name: "Шайба",
       description: "12.03.019 ГОСТ11371-78",
       quantity: 8,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 66,
-      },
+      positioning_top: 90,
+      positioning_left: 66,
     },
     {
       id: 9,
@@ -991,10 +814,8 @@ export const collectorLinks: Product = {
       name: "Шайба",
       description: "12.65Г.019 ГОСТ 6402-70",
       quantity: 4,
-      positioning: {
-        top: collectorPositioningBottom,
-        left: 86,
-      },
+      positioning_top: 90,
+      positioning_left: 86,
     },
   ],
 };
@@ -1012,11 +833,9 @@ export const valveLinks: Product = {
       position: 1,
       name: "Клапан",
       designation: "СИН32.00.108.600",
-      // quantity: 1,
-      positioning: {
-        top: 0,
-        left: 30,
-      },
+      quantity: 1,
+      positioning_top: 0,
+      positioning_left: 30,
     },
   ],
 };
@@ -1035,10 +854,8 @@ export const valveTwoLinks: Product = {
       name: "Корпус клапана",
       designation: "СИН63.00.108.601",
       quantity: 1,
-      positioning: {
-        top: 6,
-        left: 90,
-      },
+      positioning_top: 6,
+      positioning_left: 90,
     },
     {
       id: 2,
@@ -1046,15 +863,11 @@ export const valveTwoLinks: Product = {
       name: "Прокладка",
       designation: "СИН63.00.108.603",
       quantity: 1,
-      positioning: {
-        top: 70,
-        left: 90,
-      },
+      positioning_top: 70,
+      positioning_left: 90,
     },
   ],
 };
-
-const plungerSealPositioningTop = 2;
 
 export const plungerSealLinks: Product = {
   id: 8,
@@ -1070,10 +883,8 @@ export const plungerSealLinks: Product = {
       name: "Гайка",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 17,
-      },
+      positioning_top: 2,
+      positioning_left: 17,
     },
     {
       id: 2,
@@ -1081,10 +892,8 @@ export const plungerSealLinks: Product = {
       name: "Втулка",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 33,
-      },
+      positioning_top: 2,
+      positioning_left: 33,
     },
     {
       id: 3,
@@ -1092,10 +901,8 @@ export const plungerSealLinks: Product = {
       name: "Пакет уплотнений",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 49,
-      },
+      positioning_top: 2,
+      positioning_left: 49,
     },
     {
       id: 4,
@@ -1103,10 +910,8 @@ export const plungerSealLinks: Product = {
       name: "Стакан",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 71,
-      },
+      positioning_top: 2,
+      positioning_left: 71,
     },
     {
       id: 5,
@@ -1114,10 +919,8 @@ export const plungerSealLinks: Product = {
       name: "Манжета",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 85,
-      },
+      positioning_top: 2,
+      positioning_left: 85,
     },
     {
       id: 6,
@@ -1125,15 +928,11 @@ export const plungerSealLinks: Product = {
       name: "Кольцо",
       description: "175-185-46-2-4 ГОСТ 9833-73/ГОСТ 18829-73",
       quantity: 1,
-      positioning: {
-        top: plungerSealPositioningTop,
-        left: 94,
-      },
+      positioning_top: 2,
+      positioning_left: 94,
     },
   ],
 };
-
-const sealPackagePositioningTop = 2;
 
 export const sealPackageLinks: Product = {
   id: 9,
@@ -1149,10 +948,8 @@ export const sealPackageLinks: Product = {
       name: "Манжета",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: sealPackagePositioningTop,
-        left: 24,
-      },
+      positioning_top: 2,
+      positioning_left: 24,
     },
     {
       id: 2,
@@ -1160,10 +957,8 @@ export const sealPackageLinks: Product = {
       name: "Кольцо",
       description: "120-125-30-2-4 ГОСТ 9833-73/ГОСТ 18829-73",
       quantity: 1,
-      positioning: {
-        top: sealPackagePositioningTop,
-        left: 42,
-      },
+      positioning_top: 2,
+      positioning_left: 42,
     },
     {
       id: 3,
@@ -1171,10 +966,8 @@ export const sealPackageLinks: Product = {
       name: "Кольцо",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: sealPackagePositioningTop,
-        left: 59,
-      },
+      positioning_top: 2,
+      positioning_left: 59,
     },
     {
       id: 4,
@@ -1182,10 +975,8 @@ export const sealPackageLinks: Product = {
       name: "Манжета",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: sealPackagePositioningTop,
-        left: 77,
-      },
+      positioning_top: 2,
+      positioning_left: 77,
     },
     {
       id: 5,
@@ -1193,16 +984,11 @@ export const sealPackageLinks: Product = {
       name: "Кольцо",
       designation: "Переменные данные",
       quantity: 1,
-      positioning: {
-        top: sealPackagePositioningTop,
-        left: 94,
-      },
+      positioning_top: 2,
+      positioning_left: 94,
     },
   ],
 };
-
-const housingSealPositioningTop = -1;
-const housingSealPositioningBottom = 94;
 
 export const housingSealLinks: Product = {
   id: 10,
@@ -1218,10 +1004,8 @@ export const housingSealLinks: Product = {
       name: "Шнур",
       description: "1-4 с Ø4 ГОСТ 6467-79 (L=860мм)",
       // quantity: 3,
-      positioning: {
-        top: housingSealPositioningTop,
-        left: 24,
-      },
+      positioning_top: -1,
+      positioning_left: 24,
     },
     {
       id: 2,
@@ -1229,10 +1013,8 @@ export const housingSealLinks: Product = {
       name: "Фланец",
       designation: "СИН32.02.100.003",
       quantity: 3,
-      positioning: {
-        top: housingSealPositioningTop,
-        left: 39,
-      },
+      positioning_top: -1,
+      positioning_left: 39,
     },
     {
       id: 3,
@@ -1240,10 +1022,8 @@ export const housingSealLinks: Product = {
       name: "Кольцо",
       designation: "СИН63.00.104.001",
       quantity: 3,
-      positioning: {
-        top: housingSealPositioningTop,
-        left: 50,
-      },
+      positioning_top: -1,
+      positioning_left: 50,
     },
     {
       id: 4,
@@ -1251,10 +1031,8 @@ export const housingSealLinks: Product = {
       name: "Шайба",
       description: "8.65Г.019 ГОСТ6402-70",
       quantity: 12,
-      positioning: {
-        top: housingSealPositioningBottom,
-        left: 43,
-      },
+      positioning_top: 94,
+      positioning_left: 43,
     },
     {
       id: 5,
@@ -1262,10 +1040,8 @@ export const housingSealLinks: Product = {
       name: "Шайба",
       description: "8.03.019 ГОСТ 11371-78",
       quantity: 12,
-      positioning: {
-        top: housingSealPositioningBottom,
-        left: 48,
-      },
+      positioning_top: 94,
+      positioning_left: 48,
     },
     {
       id: 6,
@@ -1273,10 +1049,8 @@ export const housingSealLinks: Product = {
       name: "Болт",
       description: "М8-8gx25.58.019 ГОСТ 7798-70",
       quantity: 12,
-      positioning: {
-        top: housingSealPositioningBottom,
-        left: 55,
-      },
+      positioning_top: 94,
+      positioning_left: 55,
     },
     {
       id: 7,
@@ -1284,17 +1058,11 @@ export const housingSealLinks: Product = {
       name: "Чехол",
       designation: "СИН32.02.100.004",
       quantity: 3,
-      positioning: {
-        top: housingSealPositioningBottom,
-        left: 79,
-      },
+      positioning_top: 94,
+      positioning_left: 79,
     },
   ],
 };
-
-const installingTheSensorIndicatorPositioningTop = 86;
-const installingTheSensorIndicatorPositioningBottom = 94;
-const installingTheSensorIndicatorPositioningRight = 77;
 
 export const installingTheSensorIndicatorLinks: Product = {
   id: 11,
@@ -1310,10 +1078,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Крышка",
       designation: "СИН32.02.106.001",
       quantity: 3,
-      positioning: {
-        top: installingTheSensorIndicatorPositioningTop,
-        left: 19,
-      },
+      positioning_top: 86,
+      positioning_left: 19,
     },
     {
       id: 2,
@@ -1321,10 +1087,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=800 мм",
       quantity: 3,
-      positioning: {
-        top: installingTheSensorIndicatorPositioningTop,
-        left: 11,
-      },
+      positioning_top: 86,
+      positioning_left: 11,
     },
     {
       id: 3,
@@ -1332,10 +1096,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Шайба",
       description: "16.03.019 ГОСТ 11371-78",
       quantity: 12,
-      positioning: {
-        top: installingTheSensorIndicatorPositioningBottom,
-        left: 44,
-      },
+      positioning_top: 94,
+      positioning_left: 44,
     },
     {
       id: 4,
@@ -1343,10 +1105,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Шайба",
       description: "16.65Г.019 ГОСТ 6402-70",
       quantity: 12,
-      positioning: {
-        top: installingTheSensorIndicatorPositioningBottom,
-        left: 49,
-      },
+      positioning_top: 94,
+      positioning_left: 49,
     },
     {
       id: 5,
@@ -1354,10 +1114,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Болт",
       description: "М16-8gх50.58.019 ГОСТ 7798-70",
       quantity: 12,
-      positioning: {
-        top: installingTheSensorIndicatorPositioningBottom,
-        left: 54,
-      },
+      positioning_top: 94,
+      positioning_left: 54,
     },
     {
       id: 6,
@@ -1365,10 +1123,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Индуктивный выключатель",
       description: "ISNFC2A-32 P-4LS4 + гайка",
       quantity: 12,
-      positioning: {
-        top: 73,
-        left: installingTheSensorIndicatorPositioningRight,
-      },
+      positioning_top: 73,
+      positioning_left: 77,
     },
     {
       id: 7,
@@ -1376,10 +1132,8 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Штуцер",
       designation: "СИН46.02.200.003",
       quantity: 3,
-      positioning: {
-        top: 61,
-        left: installingTheSensorIndicatorPositioningRight,
-      },
+      positioning_top: 61,
+      positioning_left: 77,
     },
     {
       id: 8,
@@ -1387,16 +1141,11 @@ export const installingTheSensorIndicatorLinks: Product = {
       name: "Заглушка",
       description: "S2610 1/2",
       quantity: 3,
-      positioning: {
-        top: 53,
-        left: installingTheSensorIndicatorPositioningRight,
-      },
+      positioning_top: 53,
+      positioning_left: 77,
     },
   ],
 };
-
-const installingTheSensorIndicatorTwoPositioningLeft = 10;
-const installingTheSensorIndicatorTwoPositioningRight = 88;
 
 export const installingTheSensorIndicatorTwoLinks: Product = {
   id: 12,
@@ -1412,10 +1161,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Крышка",
       designation: "СИН32.02.106.101",
       quantity: 1,
-      positioning: {
-        top: 65,
-        left: installingTheSensorIndicatorTwoPositioningLeft,
-      },
+      positioning_top: 65,
+      positioning_left: 10,
     },
     {
       id: 2,
@@ -1423,10 +1170,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Шнур",
       description: "1-4 Md4 ГОСТ 6467-79, L=800 мм",
       quantity: 1,
-      positioning: {
-        top: 56,
-        left: installingTheSensorIndicatorTwoPositioningLeft,
-      },
+      positioning_top: 56,
+      positioning_left: 10,
     },
     {
       id: 3,
@@ -1434,10 +1179,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Кольцо",
       description: "А20 ГОСТ 13942-86",
       quantity: 1,
-      positioning: {
-        top: 48,
-        left: installingTheSensorIndicatorTwoPositioningLeft,
-      },
+      positioning_top: 48,
+      positioning_left: 10,
     },
     {
       id: 4,
@@ -1445,10 +1188,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Кольцо",
       description: "016-020-25-2-3",
       quantity: 1,
-      positioning: {
-        top: 36,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 36,
+      positioning_left: 88,
     },
     {
       id: 5,
@@ -1456,10 +1197,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Штуцер",
       designation: "СИН32.02.106.102",
       quantity: 1,
-      positioning: {
-        top: 58,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 58,
+      positioning_left: 88,
     },
     {
       id: 6,
@@ -1467,10 +1206,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Индуктивный выключатель",
       description: "ISNFC2A-32 P-4LS4 + гайка",
       quantity: 1,
-      positioning: {
-        top: 67,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 67,
+      positioning_left: 88,
     },
     {
       id: 7,
@@ -1478,10 +1215,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Винт",
       description: "М8-8gх20.58.019 ГОСТ 11738-84",
       quantity: 8,
-      positioning: {
-        top: 82,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 82,
+      positioning_left: 88,
     },
     {
       id: 8,
@@ -1489,10 +1224,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
       quantity: 8,
-      positioning: {
-        top: 88,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 88,
+      positioning_left: 88,
     },
     {
       id: 9,
@@ -1500,10 +1233,8 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Втулка",
       designation: "СИН51.00.100.016-02",
       quantity: 8,
-      positioning: {
-        top: 93,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 93,
+      positioning_left: 88,
     },
     {
       id: 10,
@@ -1511,18 +1242,11 @@ export const installingTheSensorIndicatorTwoLinks: Product = {
       name: "Заглушка",
       description: "S2610 1/2",
       quantity: 1,
-      positioning: {
-        top: 27,
-        left: installingTheSensorIndicatorTwoPositioningRight,
-      },
+      positioning_top: 27,
+      positioning_left: 88,
     },
   ],
 };
-
-const plungerLubricationSystemPositioningTop = -1;
-const plungerLubricationSystemPositioningRight = 71;
-const plungerLubricationSystemPositioningBottom = 90;
-const plungerLubricationSystemPositioningLeft = 3;
 
 export const plungerLubricationSystemLinks: Product = {
   id: 13,
@@ -1538,10 +1262,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Кронштейн",
       designation: "СИН32.02.104.001",
       quantity: 1,
-      positioning: {
-        top: 24,
-        left: 81,
-      },
+      positioning_top: 24,
+      positioning_left: 81,
     },
     {
       id: 2,
@@ -1549,10 +1271,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Переходник",
       designation: "СИН32.04.100.05.10.002",
       quantity: 1,
-      positioning: {
-        top: 41,
-        left: 108,
-      },
+      positioning_top: 41,
+      positioning_left: 108,
     },
     {
       id: 3,
@@ -1560,10 +1280,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Доработка бака",
       designation: "СИН32.04.100.05.10.007",
       quantity: 1,
-      positioning: {
-        top: 17,
-        left: 81,
-      },
+      positioning_top: 17,
+      positioning_left: 81,
     },
     {
       id: 4,
@@ -1571,10 +1289,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Дроссель",
       designation: "СИН32.04.100.05.10.009",
       quantity: 1,
-      positioning: {
-        top: plungerLubricationSystemPositioningBottom,
-        left: 102,
-      },
+      positioning_top: 90,
+      positioning_left: 102,
     },
     {
       id: 5,
@@ -1582,10 +1298,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Болт",
       description: "М8-8gx35.58.019 ГОСТ 7798-70",
       quantity: 2,
-      positioning: {
-        top: 34,
-        left: 81,
-      },
+      positioning_top: 34,
+      positioning_left: 81,
     },
     {
       id: 6,
@@ -1593,12 +1307,10 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Гайка",
       description: "М8-7Н.8.019 ГОСТ 5915-70",
       quantity: 3,
-      positioning: {
-        top: plungerLubricationSystemPositioningTop,
-        left: 26,
-        top2: 39,
-        left2: 81,
-      },
+      positioning_top: -1,
+      positioning_left: 26,
+      positioning_top2: 39,
+      positioning_left2: 81,
     },
     {
       id: 7,
@@ -1606,10 +1318,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Гайка",
       description: "М16-7Н.8.019 ГОСТ 5915-70",
       quantity: 1,
-      positioning: {
-        top: 41,
-        left: 102,
-      },
+      positioning_top: 41,
+      positioning_left: 102,
     },
     {
       id: 8,
@@ -1617,10 +1327,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Шайба",
       description: "8.03.019 ГОСТ 11371-78",
       quantity: 2,
-      positioning: {
-        top: 44,
-        left: 81,
-      },
+      positioning_top: 44,
+      positioning_left: 81,
     },
     {
       id: 9,
@@ -1628,10 +1336,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Шайба",
       description: "16.65Г.019 ГОСТ 6402-70",
       quantity: 1,
-      positioning: {
-        top: 47,
-        left: 102,
-      },
+      positioning_top: 47,
+      positioning_left: 102,
     },
     {
       id: 10,
@@ -1639,10 +1345,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
       quantity: 2,
-      positioning: {
-        top: 49,
-        left: 81,
-      },
+      positioning_top: 49,
+      positioning_left: 81,
     },
     {
       id: 11,
@@ -1650,10 +1354,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Шпилька",
       description: "М8-8gx25.58.019 ГОСТ 22036-76",
       quantity: 1,
-      positioning: {
-        top: plungerLubricationSystemPositioningTop,
-        left: 31,
-      },
+      positioning_top: -1,
+      positioning_left: 31,
     },
     {
       id: 12,
@@ -1661,18 +1363,16 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Колпачок",
       description: "6708 8",
       quantity: 9,
-      positioning: {
-        top: 25,
-        left: plungerLubricationSystemPositioningRight,
-        top2: 68,
-        left2: 85,
-        top3: 68,
-        left3: 109,
-        top4: 25,
-        left4: plungerLubricationSystemPositioningLeft,
-        top5: 70,
-        left5: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 25,
+      positioning_left: 71,
+      positioning_top2: 68,
+      positioning_left2: 85,
+      positioning_top3: 68,
+      positioning_left3: 109,
+      positioning_top4: 25,
+      positioning_left4: 3,
+      positioning_top5: 70,
+      positioning_left5: 71,
     },
     {
       id: 13,
@@ -1680,12 +1380,10 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Кран шаровой муфтовый",
       description: "Dу15",
       quantity: 2,
-      positioning: {
-        top: 41,
-        left: 115,
-        top2: 68,
-        left2: 102,
-      },
+      positioning_top: 41,
+      positioning_left: 115,
+      positioning_top2: 68,
+      positioning_left2: 102,
     },
     {
       id: 14,
@@ -1693,10 +1391,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Крышка расширительного бочка",
       description: "Газель СБ 3302-1311065",
       quantity: 1,
-      positioning: {
-        top: 8,
-        left: 81,
-      },
+      positioning_top: 8,
+      positioning_left: 81,
     },
     {
       id: 15,
@@ -1704,10 +1400,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Фитинг",
       description: "2033 1/4",
       quantity: 1,
-      positioning: {
-        top: 45,
-        left: plungerLubricationSystemPositioningLeft,
-      },
+      positioning_top: 45,
+      positioning_left: 3,
     },
     {
       id: 16,
@@ -1715,10 +1409,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Фитинг",
       description: "2511 1/4",
       quantity: 1,
-      positioning: {
-        top: 53,
-        left: plungerLubricationSystemPositioningLeft,
-      },
+      positioning_top: 53,
+      positioning_left: 3,
     },
     {
       id: 17,
@@ -1726,12 +1418,10 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Фитинг",
       description: "2531 1/2-1/4",
       quantity: 2,
-      positioning: {
-        top: plungerLubricationSystemPositioningBottom,
-        left: 91,
-        top2: plungerLubricationSystemPositioningBottom,
-        left2: 107,
-      },
+      positioning_top: 90,
+      positioning_left: 91,
+      positioning_top2: 90,
+      positioning_left2: 107,
     },
     {
       id: 18,
@@ -1739,18 +1429,16 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Фитинг",
       description: "S6520 8-1/4",
       quantity: 6,
-      positioning: {
-        top: 30,
-        left: plungerLubricationSystemPositioningRight,
-        top2: 74,
-        left2: 85,
-        top3: 74,
-        left3: 109,
-        top4: 30,
-        left4: plungerLubricationSystemPositioningLeft,
-        top5: 75,
-        left5: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 30,
+      positioning_left: 71,
+      positioning_top2: 74,
+      positioning_left2: 85,
+      positioning_top3: 74,
+      positioning_left3: 109,
+      positioning_top4: 30,
+      positioning_left4: 3,
+      positioning_top5: 75,
+      positioning_left5: 71,
     },
     {
       id: 19,
@@ -1758,10 +1446,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: 'Хомут сантехнический с гайкой М8, 3/4"',
       description: "(d25-28 мм)",
       quantity: 1,
-      positioning: {
-        top: plungerLubricationSystemPositioningTop,
-        left: 36,
-      },
+      positioning_top: -1,
+      positioning_left: 36,
     },
     {
       id: 20,
@@ -1769,10 +1455,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Трубка",
       description: "Мод. TRN 8/6, L=370 мм",
       quantity: 1,
-      positioning: {
-        top: 59,
-        left: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 59,
+      positioning_left: 71,
     },
     {
       id: 21,
@@ -1780,10 +1464,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Трубка",
       description: "Мод. TRN 8/6, L=400 мм",
       quantity: 1,
-      positioning: {
-        top: 82,
-        left: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 82,
+      positioning_left: 71,
     },
     {
       id: 22,
@@ -1791,10 +1473,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Трубка",
       description: "Мод. TRN 8/6, L=600 мм",
       quantity: 1,
-      positioning: {
-        top: plungerLubricationSystemPositioningTop,
-        left: 61,
-      },
+      positioning_top: -1,
+      positioning_left: 61,
     },
     {
       id: 23,
@@ -1802,10 +1482,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Трубка",
       description: "Мод. TRN 8/6, L=770 мм",
       quantity: 1,
-      positioning: {
-        top: 5,
-        left: plungerLubricationSystemPositioningLeft,
-      },
+      positioning_top: 5,
+      positioning_left: 3,
     },
     {
       id: 24,
@@ -1813,10 +1491,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=470 мм",
       quantity: 1,
-      positioning: {
-        top: 64,
-        left: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 64,
+      positioning_left: 71,
     },
     {
       id: 25,
@@ -1824,10 +1500,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=500 мм",
       quantity: 1,
-      positioning: {
-        top: 87,
-        left: plungerLubricationSystemPositioningRight,
-      },
+      positioning_top: 87,
+      positioning_left: 71,
     },
     {
       id: 26,
@@ -1835,10 +1509,8 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=700 мм",
       quantity: 1,
-      positioning: {
-        top: 5,
-        left: 61,
-      },
+      positioning_top: 5,
+      positioning_left: 61,
     },
     {
       id: 27,
@@ -1846,17 +1518,11 @@ export const plungerLubricationSystemLinks: Product = {
       name: "Спираль защитная",
       description: "Dнар.=12 мм, L=870 мм",
       quantity: 1,
-      positioning: {
-        top: 10,
-        left: plungerLubricationSystemPositioningLeft,
-      },
+      positioning_top: 10,
+      positioning_left: 3,
     },
   ],
 };
-
-const pumpLubricationSystemPositioningTop = -1;
-const pumpLubricationSystemPositioningBottom = 92;
-const pumpLubricationSystemPositioningLeft = 0;
 
 export const pumpLubricationSystemLinks: Product = {
   id: 14,
@@ -1872,10 +1538,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Кронштейн фильтра",
       designation: "СИН32.02.107.100",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningBottom,
-        left: 42,
-      },
+      positioning_top: 92,
+      positioning_left: 42,
     },
     {
       id: 2,
@@ -1883,10 +1547,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Переходник",
       designation: "СИН32.02.107.001",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningBottom,
-        left: 37,
-      },
+      positioning_top: 92,
+      positioning_left: 37,
     },
     {
       id: 3,
@@ -1894,10 +1556,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Болт",
       description: "М10-8gx20.58.019 ГОСТ 7798-70",
       quantity: 2,
-      positioning: {
-        top: 91,
-        left: 52,
-      },
+      positioning_top: 91,
+      positioning_left: 52,
     },
     {
       id: 4,
@@ -1905,10 +1565,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Винт",
       description: "М8-8gx20.58.019 ГОСТ 11738-84",
       quantity: 4,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 48,
-      },
+      positioning_top: -1,
+      positioning_left: 48,
     },
     {
       id: 5,
@@ -1916,10 +1574,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Шайба",
       description: "8.65Г.019 ГОСТ 6402-70",
       quantity: 4,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 52,
-      },
+      positioning_top: -1,
+      positioning_left: 52,
     },
     {
       id: 6,
@@ -1927,10 +1583,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Шайба",
       description: "10.65Г.019 ГОСТ 6402-70",
       quantity: 2,
-      positioning: {
-        top: 96,
-        left: 52,
-      },
+      positioning_top: 96,
+      positioning_left: 52,
     },
     {
       id: 7,
@@ -1938,10 +1592,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Датчик аварийного давления масла",
       description: "ММ111В",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 31,
-      },
+      positioning_top: -1,
+      positioning_left: 31,
     },
     {
       id: 8,
@@ -1949,10 +1601,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Заглушка",
       description: 'S2610 1/4"',
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 38,
-      },
+      positioning_top: -1,
+      positioning_left: 38,
     },
     {
       id: 9,
@@ -1960,10 +1610,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Пробка",
       description: 'G1/2"_ПБ 2100',
       quantity: 1,
-      positioning: {
-        top: 23,
-        left: pumpLubricationSystemPositioningLeft,
-      },
+      positioning_top: 23,
+      positioning_left: 0,
     },
     {
       id: 10,
@@ -1971,10 +1619,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Проходник",
       description: 'М27х1,5 х К 3/4" СН 2737-2600',
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 57,
-      },
+      positioning_top: -1,
+      positioning_left: 57,
     },
     {
       id: 11,
@@ -1982,10 +1628,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Резинометаллическое кольцо",
       description: '(USIT) под G1/2"',
       quantity: 1,
-      positioning: {
-        top: 29,
-        left: pumpLubricationSystemPositioningLeft,
-      },
+      positioning_top: 29,
+      positioning_left: 0,
     },
     {
       id: 12,
@@ -1993,10 +1637,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Рукав РВД",
       description: "16х13х900-11.90/11-М27х1,5/М27х1,5-УХЛ",
       quantity: 1,
-      positioning: {
-        top: 8,
-        left: pumpLubricationSystemPositioningLeft,
-      },
+      positioning_top: 8,
+      positioning_left: 0,
     },
     {
       id: 13,
@@ -2004,10 +1646,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Рукав РВД",
       description: "16х13х1200-11.90/11.90-180-М27х1,5/М27х1,5-УХЛ",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningBottom,
-        left: 59,
-      },
+      positioning_top: 92,
+      positioning_left: 59,
     },
     {
       id: 14,
@@ -2015,10 +1655,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Рукав РВД",
       description: "25х8,8х1200-11.90/11.90-М42х2/М42х2-УХЛ",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 82,
-      },
+      positioning_top: -1,
+      positioning_left: 82,
     },
     {
       id: 15,
@@ -2026,10 +1664,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Фильтр",
       description: "2ФГМ32-40К",
       quantity: 1,
-      positioning: {
-        top: pumpLubricationSystemPositioningTop,
-        left: 43,
-      },
+      positioning_top: -1,
+      positioning_left: 43,
     },
     {
       id: 16,
@@ -2037,33 +1673,8 @@ export const pumpLubricationSystemLinks: Product = {
       name: "Фильтрующий элемент",
       description: "STR0704SG1 M90 P01",
       quantity: 1,
-      positioning: {
-        top: 24,
-        left: 98,
-      },
+      positioning_top: 24,
+      positioning_left: 98,
     },
   ],
 };
-
-export const schemes = [
-  { path: "three-plunger-pump", data: threePlungerPumpLinks },
-  { path: "connecting-rod", data: connectingRodLinks },
-  { path: "traction-unit", data: tractionUnitLinks },
-  { path: "waterworks", data: waterworksLinks },
-  { path: "collector", data: collectorLinks },
-  { path: "valve", data: valveLinks },
-  { path: "valveTwo", data: valveTwoLinks },
-  { path: "plungerSeal", data: plungerSealLinks },
-  { path: "sealPackage", data: sealPackageLinks },
-  { path: "housingSeal", data: housingSealLinks },
-  {
-    path: "installingTheSensorIndicator",
-    data: installingTheSensorIndicatorLinks,
-  },
-  {
-    path: "installingTheSensorIndicatorTwo",
-    data: installingTheSensorIndicatorTwoLinks,
-  },
-  { path: "plungerLubricationSystem", data: plungerLubricationSystemLinks },
-  { path: "pumpLubricationSystem", data: pumpLubricationSystemLinks },
-];

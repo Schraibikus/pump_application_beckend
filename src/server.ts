@@ -51,18 +51,6 @@ function startServer() {
     }
   });
 
-  // 🔹 Получение названий схем и их пути
-  app.get("/api/schemes", async (_, res) => {
-    try {
-      const [rows] = await pool.query("SELECT * FROM schemes");
-      res.json(rows);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.error("Ошибка запроса:", error.message);
-      res.status(500).json({ error: "Ошибка сервера" });
-    }
-  });
-
   app.listen(PORT, () => {
     console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
   });
