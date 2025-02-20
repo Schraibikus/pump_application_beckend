@@ -55,16 +55,16 @@ async function setupDatabase() {
         description TEXT NULL,
         quantity INT NOT NULL DEFAULT 1,
         drawing INT NULL,
-        positioning_top INT NULL,
-        positioning_left INT NULL,
-        positioning_top2 INT NULL,
-        positioning_left2 INT NULL,
-        positioning_top3 INT NULL,
-        positioning_left3 INT NULL,
-        positioning_top4 INT NULL,
-        positioning_left4 INT NULL,
-        positioning_top5 INT NULL,
-        positioning_left5 INT NULL,
+        positioningTop INT NULL,
+        positioningLeft INT NULL,
+        positioningTop2 INT NULL,
+        positioningLeft2 INT NULL,
+        positioningTop3 INT NULL,
+        positioningLeft3 INT NULL,
+        positioningTop4 INT NULL,
+        positioningLeft4 INT NULL,
+        positioningTop5 INT NULL,
+        positioningLeft5 INT NULL,
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
       )
     `);
@@ -151,20 +151,20 @@ async function setupDatabase() {
             `(${part.product_id}, ${part.position}, '${part.name}', ${
               part.designation ? `'${part.designation}'` : "NULL"
             }, ${part.quantity ?? "NULL"}, ${part.drawing ?? "NULL"}, 
-            ${part.positioning_top ?? "NULL"}, ${
-              part.positioning_left ?? "NULL"
+            ${part.positioningTop ?? "NULL"}, ${
+              part.positioningLeft ?? "NULL"
             },
-            ${part.positioning_top2 ?? "NULL"}, ${
-              part.positioning_left2 ?? "NULL"
+            ${part.positioningTop2 ?? "NULL"}, ${
+              part.positioningLeft2 ?? "NULL"
             },
-            ${part.positioning_top3 ?? "NULL"}, ${
-              part.positioning_left3 ?? "NULL"
+            ${part.positioningTop3 ?? "NULL"}, ${
+              part.positioningLeft3 ?? "NULL"
             },
-            ${part.positioning_top4 ?? "NULL"}, ${
-              part.positioning_left4 ?? "NULL"
+            ${part.positioningTop4 ?? "NULL"}, ${
+              part.positioningLeft4 ?? "NULL"
             },
-            ${part.positioning_top5 ?? "NULL"}, ${
-              part.positioning_left5 ?? "NULL"
+            ${part.positioningTop5 ?? "NULL"}, ${
+              part.positioningLeft5 ?? "NULL"
             })`
         )
         .join(",");
@@ -172,25 +172,25 @@ async function setupDatabase() {
       const partQuery = `
         INSERT INTO parts 
           (product_id, position, name, designation, quantity, drawing, 
-          positioning_top, positioning_left, positioning_top2, positioning_left2, 
-          positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
-          positioning_top5, positioning_left5) 
+          positioningTop, positioningLeft, positioningTop2, positioningLeft2, 
+          positioningTop3, positioningLeft3, positioningTop4, positioningLeft4, 
+          positioningTop5, positioningLeft5) 
         VALUES ${partValues}
         ON DUPLICATE KEY UPDATE 
           name = VALUES(name), 
           designation = VALUES(designation), 
           quantity = VALUES(quantity), 
           drawing = VALUES(drawing), 
-          positioning_top = VALUES(positioning_top), 
-          positioning_left = VALUES(positioning_left), 
-          positioning_top2 = VALUES(positioning_top2), 
-          positioning_left2 = VALUES(positioning_left2), 
-          positioning_top3 = VALUES(positioning_top3), 
-          positioning_left3 = VALUES(positioning_left3), 
-          positioning_top4 = VALUES(positioning_top4), 
-          positioning_left4 = VALUES(positioning_left4), 
-          positioning_top5 = VALUES(positioning_top5), 
-          positioning_left5 = VALUES(positioning_left5)
+          positioningTop = VALUES(positioningTop), 
+          positioningLeft = VALUES(positioningLeft), 
+          positioningTop2 = VALUES(positioningTop2), 
+          positioningLeft2 = VALUES(positioningLeft2), 
+          positioningTop3 = VALUES(positioningTop3), 
+          positioningLeft3 = VALUES(positioningLeft3), 
+          positioningTop4 = VALUES(positioningTop4), 
+          positioningLeft4 = VALUES(positioningLeft4), 
+          positioningTop5 = VALUES(positioningTop5), 
+          positioningLeft5 = VALUES(positioningLeft5)
       `;
 
       await connection.query(partQuery);

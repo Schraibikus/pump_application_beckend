@@ -19,20 +19,21 @@ export interface PartItem {
   designation?: string;
   quantity: number;
   drawing?: number | null;
-  positioning_top?: number | null;
-  positioning_left?: number | null;
-  positioning_top2?: number | null;
-  positioning_left2?: number | null;
-  positioning_top3?: number | null;
-  positioning_left3?: number | null;
-  positioning_top4?: number | null;
-  positioning_left4?: number | null;
-  positioning_top5?: number | null;
-  positioning_left5?: number | null;
+  positioningTop?: number | null;
+  positioningLeft?: number | null;
+  positioningTop2?: number | null;
+  positioningLeft2?: number | null;
+  positioningTop3?: number | null;
+  positioningLeft3?: number | null;
+  positioningTop4?: number | null;
+  positioningLeft4?: number | null;
+  positioningTop5?: number | null;
+  positioningLeft5?: number | null;
 }
 
 export interface Order {
   orderId: number;
   createdAt: string;
+  // status: string;
   parts: PartItem[];
 }

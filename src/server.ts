@@ -5,6 +5,7 @@ import pool from "./config/db.js";
 import morgan from "morgan";
 import { ResultSetHeader } from "mysql2";
 import { Order } from "./temp/types.js";
+import { convertToCamelCase } from "./utils/caseConverter.js";
 
 const app = express();
 const PORT = 5000;
@@ -47,8 +48,8 @@ function startServer() {
         "SELECT * FROM parts WHERE product_id = ?",
         [id]
       );
-      res.json(rows);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+      res.json(convertToCamelCase(rows)); // ✅ Преобразуем данные перед отправкой
     } catch (error: any) {
       console.error("Ошибка запроса:", error.message);
       res.status(500).json({ error: "Ошибка сервера" });
@@ -81,27 +82,27 @@ function startServer() {
         part.designation || null,
         part.quantity,
         part.drawing || null,
-        part.positioning_top ?? null,
-        part.positioning_left ?? null,
-        part.positioning_top2 ?? null,
-        part.positioning_left2 ?? null,
-        part.positioning_top3 ?? null,
-        part.positioning_left3 ?? null,
-        part.positioning_top4 ?? null,
-        part.positioning_left4 ?? null,
-        part.positioning_top5 ?? null,
-        part.positioning_left5 ?? null,
+        part.positioningTop ?? null,
+        part.positioningLeft ?? null,
+        part.positioningTop2 ?? null,
+        part.positioningLeft2 ?? null,
+        part.positioningTop3 ?? null,
+        part.positioningLeft3 ?? null,
+        part.positioningTop4 ?? null,
+        part.positioningLeft4 ?? null,
+        part.positioningTop5 ?? null,
+        part.positioningLeft5 ?? null,
       ]);
 
       await pool.query(
         `INSERT INTO order_parts (
         order_id, part_id, parent_product_id, product_name, product_drawing,
         position, name, description, designation, quantity, drawing,
-        positioning_top, positioning_left,
-        positioning_top2, positioning_left2,
-        positioning_top3, positioning_left3,
-        positioning_top4, positioning_left4,
-        positioning_top5, positioning_left5
+        positioningTop, positioningLeft,
+        positioningTop2, positioningLeft2,
+        positioningTop3, positioningLeft3,
+        positioningTop4, positioningLeft4,
+        positioningTop5, positioningLeft5
       ) VALUES ?`,
         [partValues]
       );
@@ -133,7 +134,7 @@ function startServer() {
         order.parts = parts;
       }
 
-      res.json(orders);
+      res.json(convertToCamelCase(orders)); // ✅ Конвертируем перед отправкой
     } catch (error) {
       console.error("Ошибка при получении заказов:", error);
       res.status(500).json({ message: "Ошибка при получении заказов" });

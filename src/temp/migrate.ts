@@ -151,20 +151,18 @@ async function setupDatabase() {
             `(${part.product_id}, ${part.position}, '${part.name}', ${
               part.designation ? `'${part.designation}'` : "NULL"
             }, ${part.quantity || 1}, ${part.drawing ?? "NULL"}, 
-            ${part.positioning_top ?? "NULL"}, ${
-              part.positioning_left ?? "NULL"
+            ${part.positioningTop ?? "NULL"}, ${part.positioningLeft ?? "NULL"},
+            ${part.positioningTop2 ?? "NULL"}, ${
+              part.positioningLeft2 ?? "NULL"
             },
-            ${part.positioning_top2 ?? "NULL"}, ${
-              part.positioning_left2 ?? "NULL"
+            ${part.positioningTop3 ?? "NULL"}, ${
+              part.positioningLeft3 ?? "NULL"
             },
-            ${part.positioning_top3 ?? "NULL"}, ${
-              part.positioning_left3 ?? "NULL"
+            ${part.positioningTop4 ?? "NULL"}, ${
+              part.positioningLeft4 ?? "NULL"
             },
-            ${part.positioning_top4 ?? "NULL"}, ${
-              part.positioning_left4 ?? "NULL"
-            },
-            ${part.positioning_top5 ?? "NULL"}, ${
-              part.positioning_left5 ?? "NULL"
+            ${part.positioningTop5 ?? "NULL"}, ${
+              part.positioningLeft5 ?? "NULL"
             })`
         )
         .join(",");
