@@ -19,7 +19,6 @@ import {
 
 dotenv.config();
 
-// Подключение к MySQL
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -32,7 +31,6 @@ async function setupDatabase() {
   try {
     console.log("Создаём таблицы...");
 
-    // 🔹 Таблица продуктов
     await connection.query(`
       CREATE TABLE IF NOT EXISTS products (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -44,7 +42,6 @@ async function setupDatabase() {
       )
     `);
 
-    // 🔹 Таблица деталей (частей)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS parts (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -69,7 +66,6 @@ async function setupDatabase() {
       )
     `);
 
-    // 🔹 Таблица заказов
     await connection.query(`
       CREATE TABLE IF NOT EXISTS orders (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -77,23 +73,37 @@ async function setupDatabase() {
       )
     `);
 
-    // 🔹 Таблица связи заказов и деталей
     await connection.query(`
       CREATE TABLE IF NOT EXISTS order_parts (
         id INT PRIMARY KEY AUTO_INCREMENT,
         order_id INT NOT NULL,
         part_id INT NOT NULL,
+        parent_product_id INT NOT NULL,
+        product_name VARCHAR(255) NOT NULL,
+        product_drawing VARCHAR(255) NULL,
+        position INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        description TEXT NULL,
+        designation VARCHAR(255) NULL,
         quantity INT NOT NULL DEFAULT 1,
-        product_id INT NOT NULL, 
+        drawing INT NULL,
+        positioningTop INT NULL,
+        positioningLeft INT NULL,
+        positioningTop2 INT NULL,
+        positioningLeft2 INT NULL,
+        positioningTop3 INT NULL,
+        positioningLeft3 INT NULL,
+        positioningTop4 INT NULL,
+        positioningLeft4 INT NULL,
+        positioningTop5 INT NULL,
+        positioningLeft5 INT NULL,
         FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE,
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
       )
     `);
 
     console.log("Добавляем данные...");
 
-    // 🔹 Массив всех продуктов
     const products = [
       threePlungerPumpLinks,
       connectingRodLinks,
@@ -111,7 +121,6 @@ async function setupDatabase() {
       pumpLubricationSystemLinks,
     ];
 
-    // 🔹 Вставка всех products
     const productValues = products
       .map(
         (product) =>
@@ -132,11 +141,9 @@ async function setupDatabase() {
           name = VALUES(name), 
           drawing = VALUES(drawing)
       `;
-
       await connection.query(productQuery);
     }
 
-    // 🔹 Вставка всех parts
     const parts = products.flatMap((product) =>
       product.parts.map((part) => ({
         product_id: product.id,
@@ -190,7 +197,6 @@ async function setupDatabase() {
           positioning_top5 = VALUES(positioning_top5), 
           positioning_left5 = VALUES(positioning_left5)
       `;
-
       await connection.query(partQuery);
     }
 

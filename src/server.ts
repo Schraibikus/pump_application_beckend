@@ -133,7 +133,7 @@ function startServer() {
         );
         order.parts = parts;
       }
-
+      // console.log("Ответ сервера:", orders);
       res.json(convertToCamelCase(orders)); // ✅ Конвертируем перед отправкой
     } catch (error) {
       console.error("Ошибка при получении заказов:", error);

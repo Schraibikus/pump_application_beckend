@@ -34,6 +34,5 @@ export interface PartItem {
 export interface Order {
   orderId: number;
   createdAt: string;
-  // status: string;
   parts: PartItem[];
 }
