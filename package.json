@@ -1,10 +1,10 @@
 {
-  "name": "backend",
+  "name": "pump-application-backend",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/server.js",
   "engines": {
-    "node": "22.x"
+    "node": "22.14.0"
   },
   "scripts": {
     "start": "node dist/server.js",
