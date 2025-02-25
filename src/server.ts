@@ -1,5 +1,7 @@
 import express from "express";
 import { Request, Response } from "express";
+import asyncHandler from "express-async-handler";
+import { RequestHandler } from "express";
 import cors from "cors";
 import pool from "./config/db.js";
 import morgan from "morgan";
@@ -121,6 +123,46 @@ function startServer() {
     }
   });
 
+  // 🔹 Удаление заказа
+  app.delete("/api/orders/:id", async (req: any, res: any) => {
+    const { id } = req.params;
+
+    if (!Number.isInteger(Number(id))) {
+      return res.status(400).json({ message: "Invalid order ID" });
+    }
+
+    const connection = await pool.getConnection();
+
+    try {
+      await connection.beginTransaction();
+
+      // Удаляем связанные части заказа
+      await connection.query("DELETE FROM order_parts WHERE order_id = ?", [
+        id,
+      ]);
+
+      // Удаляем сам заказ
+      const [result] = await connection.query<ResultSetHeader>(
+        "DELETE FROM orders WHERE id = ?",
+        [id]
+      );
+
+      if (result.affectedRows === 0) {
+        await connection.rollback();
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      await connection.commit();
+      res.sendStatus(204); // Успешное удаление, нет содержимого для возврата
+    } catch (error: any) {
+      await connection.rollback();
+      console.error("Ошибка удаления заказа:", error.message);
+      res.status(500).json({ error: "Ошибка сервера" });
+    } finally {
+      connection.release(); // Всегда освобождаем соединение
+    }
+  });
+
   // 🔹 Получение всех заказов
   app.get("/api/orders", async (_: Request, res: Response) => {
     try {
@@ -142,6 +184,7 @@ function startServer() {
   });
 
   app.listen(PORT, () => {
-    console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
+    // console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
+    console.log(`🚀 Сервер запущен на ${PORT}`);
   });
 }
