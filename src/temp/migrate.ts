@@ -15,6 +15,7 @@ import {
   installingTheSensorIndicatorTwoLinks,
   plungerLubricationSystemLinks,
   pumpLubricationSystemLinks,
+  planetaryCylindricalGearboxLinks,
 } from "./constants.js";
 
 dotenv.config();
@@ -38,7 +39,8 @@ async function setupDatabase() {
         path VARCHAR(255),
         width INT,
         name VARCHAR(255),
-        drawing INT NULL
+        drawing INT NULL,
+        head INT NOT NULL
       )
     `);
 
@@ -119,6 +121,7 @@ async function setupDatabase() {
       installingTheSensorIndicatorTwoLinks,
       plungerLubricationSystemLinks,
       pumpLubricationSystemLinks,
+      planetaryCylindricalGearboxLinks,
     ];
 
     const productValues = products
@@ -126,20 +129,21 @@ async function setupDatabase() {
         (product) =>
           `(${product.id}, '${product.src}', '${product.path}', ${
             product.width
-          }, '${product.name}', ${product.drawing ?? "NULL"})`
+          }, '${product.name}', ${product.drawing ?? "NULL"}, ${product.head} )`
       )
       .join(",");
 
     if (productValues.length > 0) {
       const productQuery = `
-        INSERT INTO products (id, src, path, width, name, drawing) 
+        INSERT INTO products (id, src, path, width, name, drawing, head) 
         VALUES ${productValues}
         ON DUPLICATE KEY UPDATE 
           src = VALUES(src), 
           path = VALUES(path), 
           width = VALUES(width), 
           name = VALUES(name), 
-          drawing = VALUES(drawing)
+          drawing = VALUES(drawing),
+          head = VALUES(head)
       `;
       await connection.query(productQuery);
     }

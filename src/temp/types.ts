@@ -5,6 +5,7 @@ export interface Product {
   path: string;
   name: string;
   drawing?: number | null;
+  head: number;
   parts: PartItem[];
 }
 
