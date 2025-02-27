@@ -1,23 +1,21 @@
 import camelCase from "lodash/camelCase.js";
 import mapKeys from "lodash/mapKeys.js";
-import mapValues from "lodash/mapValues.js";
 
 /**
- * Преобразует объект или массив объектов из snake_case в camelCase.
+ * Преобразует ключи объекта из snake_case в camelCase, не изменяя значения.
  */
-export const convertToCamelCase = <T>(data: any): T =>
-  Array.isArray(data)
-    ? (data.map(convertToCamelCase) as T)
-    : data instanceof Date
-    ? (data.toISOString() as T)
-    : typeof data === "object" && data !== null
-    ? (mapValues(
-        mapKeys(data, (_, key) => camelCase(key)),
-        (value) =>
-          value instanceof Date
-            ? value.toISOString()
-            : typeof value === "object"
-            ? convertToCamelCase(value)
-            : value
-      ) as T)
-    : (data as T);
+export const convertToCamelCase = <T>(data: any): T => {
+  if (Array.isArray(data)) {
+    return data.map(convertToCamelCase) as T;
+  }
+
+  if (data instanceof Date) {
+    return data.toISOString() as T;
+  }
+
+  if (typeof data === "object" && data !== null) {
+    return mapKeys(data, (_, key) => camelCase(key)) as T;
+  }
+
+  return data as T;
+};
