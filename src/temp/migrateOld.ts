@@ -15,11 +15,11 @@ import {
   installingTheSensorIndicatorTwoLinks,
   plungerLubricationSystemLinks,
   pumpLubricationSystemLinks,
+  planetaryCylindricalGearboxLinks,
 } from "./constants.js";
 
 dotenv.config();
 
-// Подключение к MySQL
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -32,19 +32,18 @@ async function setupDatabase() {
   try {
     console.log("Создаём таблицы...");
 
-    // 🔹 Таблица продуктов
     await connection.query(`
       CREATE TABLE IF NOT EXISTS products (
-        id INT PRIMARY KEY,
+        id INT PRIMARY KEY AUTO_INCREMENT,
         src VARCHAR(255),
         path VARCHAR(255),
         width INT,
         name VARCHAR(255),
-        drawing INT
+        drawing INT NULL,
+        head INT NOT NULL
       )
     `);
 
-    // 🔹 Таблица деталей (частей)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS parts (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -53,6 +52,41 @@ async function setupDatabase() {
         name VARCHAR(255) NOT NULL,
         designation VARCHAR(255) NULL,
         description TEXT NULL,
+        quantity INT NOT NULL DEFAULT 1,
+        drawing INT NULL,
+        positioning_top INT NULL,
+        positioning_left INT NULL,
+        positioning_top2 INT NULL,
+        positioning_left2 INT NULL,
+        positioning_top3 INT NULL,
+        positioning_left3 INT NULL,
+        positioning_top4 INT NULL,
+        positioning_left4 INT NULL,
+        positioning_top5 INT NULL,
+        positioning_left5 INT NULL,
+        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+      )
+    `);
+
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS orders (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS order_parts (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        order_id INT NOT NULL,
+        part_id INT NOT NULL,
+        parent_product_id INT NOT NULL,
+        product_name VARCHAR(255) NOT NULL,
+        product_drawing VARCHAR(255) NULL,
+        position INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        description TEXT NULL,
+        designation VARCHAR(255) NULL,
         quantity INT NOT NULL DEFAULT 1,
         drawing INT NULL,
         positioningTop INT NULL,
@@ -65,35 +99,13 @@ async function setupDatabase() {
         positioningLeft4 INT NULL,
         positioningTop5 INT NULL,
         positioningLeft5 INT NULL,
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
-      )
-    `);
-
-    // 🔹 Таблица заказов
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS orders (
-        order_id INT PRIMARY KEY AUTO_INCREMENT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
-
-    // 🔹 Таблица связи заказов и деталей
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS order_parts (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        order_id INT NOT NULL,
-        part_id INT NOT NULL,
-        quantity INT NOT NULL DEFAULT 1,
-        product_id INT NOT NULL, 
-        FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
-        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE,
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
       )
     `);
 
     console.log("Добавляем данные...");
 
-    // 🔹 Массив всех продуктов
     const products = [
       threePlungerPumpLinks,
       connectingRodLinks,
@@ -109,34 +121,33 @@ async function setupDatabase() {
       installingTheSensorIndicatorTwoLinks,
       plungerLubricationSystemLinks,
       pumpLubricationSystemLinks,
+      planetaryCylindricalGearboxLinks,
     ];
 
-    // 🔹 Вставка всех products
     const productValues = products
       .map(
         (product) =>
           `(${product.id}, '${product.src}', '${product.path}', ${
             product.width
-          }, '${product.name}', ${product.drawing ?? "NULL"})`
+          }, '${product.name}', ${product.drawing ?? "NULL"}, ${product.head} )`
       )
       .join(",");
 
     if (productValues.length > 0) {
       const productQuery = `
-        INSERT INTO products (id, src, path, width, name, drawing) 
+        INSERT INTO products (id, src, path, width, name, drawing, head) 
         VALUES ${productValues}
         ON DUPLICATE KEY UPDATE 
           src = VALUES(src), 
           path = VALUES(path), 
           width = VALUES(width), 
           name = VALUES(name), 
-          drawing = VALUES(drawing)
+          drawing = VALUES(drawing),
+          head = VALUES(head)
       `;
-
       await connection.query(productQuery);
     }
 
-    // 🔹 Вставка всех parts
     const parts = products.flatMap((product) =>
       product.parts.map((part) => ({
         product_id: product.id,
@@ -150,10 +161,8 @@ async function setupDatabase() {
           (part) =>
             `(${part.product_id}, ${part.position}, '${part.name}', ${
               part.designation ? `'${part.designation}'` : "NULL"
-            }, ${part.quantity ?? "NULL"}, ${part.drawing ?? "NULL"}, 
-            ${part.positioningTop ?? "NULL"}, ${
-              part.positioningLeft ?? "NULL"
-            },
+            }, ${part.quantity || 1}, ${part.drawing ?? "NULL"}, 
+            ${part.positioningTop ?? "NULL"}, ${part.positioningLeft ?? "NULL"},
             ${part.positioningTop2 ?? "NULL"}, ${
               part.positioningLeft2 ?? "NULL"
             },
@@ -172,27 +181,26 @@ async function setupDatabase() {
       const partQuery = `
         INSERT INTO parts 
           (product_id, position, name, designation, quantity, drawing, 
-          positioningTop, positioningLeft, positioningTop2, positioningLeft2, 
-          positioningTop3, positioningLeft3, positioningTop4, positioningLeft4, 
-          positioningTop5, positioningLeft5) 
+          positioning_top, positioning_left, positioning_top2, positioning_left2, 
+          positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
+          positioning_top5, positioning_left5) 
         VALUES ${partValues}
         ON DUPLICATE KEY UPDATE 
           name = VALUES(name), 
           designation = VALUES(designation), 
           quantity = VALUES(quantity), 
           drawing = VALUES(drawing), 
-          positioningTop = VALUES(positioningTop), 
-          positioningLeft = VALUES(positioningLeft), 
-          positioningTop2 = VALUES(positioningTop2), 
-          positioningLeft2 = VALUES(positioningLeft2), 
-          positioningTop3 = VALUES(positioningTop3), 
-          positioningLeft3 = VALUES(positioningLeft3), 
-          positioningTop4 = VALUES(positioningTop4), 
-          positioningLeft4 = VALUES(positioningLeft4), 
-          positioningTop5 = VALUES(positioningTop5), 
-          positioningLeft5 = VALUES(positioningLeft5)
+          positioning_top = VALUES(positioning_top), 
+          positioning_left = VALUES(positioning_left), 
+          positioning_top2 = VALUES(positioning_top2), 
+          positioning_left2 = VALUES(positioning_left2), 
+          positioning_top3 = VALUES(positioning_top3), 
+          positioning_left3 = VALUES(positioning_left3), 
+          positioning_top4 = VALUES(positioning_top4), 
+          positioning_left4 = VALUES(positioning_left4), 
+          positioning_top5 = VALUES(positioning_top5), 
+          positioning_left5 = VALUES(positioning_left5)
       `;
-
       await connection.query(partQuery);
     }
 

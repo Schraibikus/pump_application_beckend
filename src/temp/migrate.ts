@@ -32,6 +32,7 @@ async function setupDatabase() {
   try {
     console.log("Создаём таблицы...");
 
+    // Создание таблиц (остаётся без изменений)
     await connection.query(`
       CREATE TABLE IF NOT EXISTS products (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,8 +51,8 @@ async function setupDatabase() {
         product_id INT NOT NULL,
         position INT NOT NULL,
         name VARCHAR(255) NOT NULL,
-        designation VARCHAR(255) NULL,
         description TEXT NULL,
+        designation VARCHAR(255) NULL,
         quantity INT NOT NULL DEFAULT 1,
         drawing INT NULL,
         positioning_top INT NULL,
@@ -69,13 +70,135 @@ async function setupDatabase() {
     `);
 
     await connection.query(`
+      CREATE TABLE IF NOT EXISTS part_alternative_sets (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        part_id INT NOT NULL,
+        set_name VARCHAR(255) NOT NULL,
+        position INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        description TEXT NULL,
+        designation VARCHAR(255) NULL,
+        quantity INT NOT NULL,
+        drawing INT NULL,
+        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
+      )
+    `);
+
+    // ... остальные таблицы ...
+
+    console.log("Добавляем данные...");
+
+    const products = [
+      threePlungerPumpLinks,
+      connectingRodLinks,
+      tractionUnitLinks,
+      waterworksLinks,
+      collectorLinks,
+      valveLinks,
+      valveTwoLinks,
+      plungerSealLinks,
+      sealPackageLinks,
+      housingSealLinks,
+      installingTheSensorIndicatorLinks,
+      installingTheSensorIndicatorTwoLinks,
+      plungerLubricationSystemLinks,
+      pumpLubricationSystemLinks,
+      planetaryCylindricalGearboxLinks,
+    ];
+
+    // Вставка изделий (products)
+    const productValues = products
+      .map(
+        (product) =>
+          `(${product.id}, '${product.src}', '${product.path}', ${
+            product.width
+          }, '${product.name}', ${product.drawing ?? "NULL"}, ${product.head})`
+      )
+      .join(",");
+
+    if (productValues.length > 0) {
+      const productQuery = `
+        INSERT INTO products (id, src, path, width, name, drawing, head) 
+        VALUES ${productValues}
+        ON DUPLICATE KEY UPDATE 
+          src = VALUES(src), 
+          path = VALUES(path), 
+          width = VALUES(width), 
+          name = VALUES(name), 
+          drawing = VALUES(drawing),
+          head = VALUES(head)
+      `;
+      await connection.query(productQuery);
+    }
+
+    // Вставка частей (parts) и альтернативных наборов (part_alternative_sets)
+    for (const product of products) {
+      for (const part of product.parts) {
+        // Вставляем часть и получаем её ID
+        const [partResult] = await connection.query<mysql.ResultSetHeader>(
+          `
+          INSERT INTO parts 
+            (product_id, position, name, description, designation, quantity, drawing, 
+            positioning_top, positioning_left, positioning_top2, positioning_left2, 
+            positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
+            positioning_top5, positioning_left5) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          `,
+          [
+            product.id,
+            part.position,
+            part.name,
+            part.description || null,
+            part.designation || null,
+            part.quantity,
+            part.drawing || null,
+            part.positioningTop || null,
+            part.positioningLeft || null,
+            part.positioningTop2 || null,
+            part.positioningLeft2 || null,
+            part.positioningTop3 || null,
+            part.positioningLeft3 || null,
+            part.positioningTop4 || null,
+            part.positioningLeft4 || null,
+            part.positioningTop5 || null,
+            part.positioningLeft5 || null,
+          ]
+        );
+
+        const partId = partResult.insertId;
+
+        // Вставляем альтернативные наборы для этой части
+        if (part.alternativeSets) {
+          const alternativeSetValues = Object.entries(part.alternativeSets).map(
+            ([setName, setData]) => [
+              partId,
+              setName,
+              setData.position,
+              setData.name,
+              setData.description || null,
+              setData.designation || null,
+              setData.quantity,
+              setData.drawing || null,
+            ]
+          );
+
+          await connection.query(
+            `
+            INSERT INTO part_alternative_sets 
+              (part_id, set_name, position, name, description, designation, quantity, drawing) 
+            VALUES ?
+            `,
+            [alternativeSetValues]
+          );
+
+          await connection.query(`
       CREATE TABLE IF NOT EXISTS orders (
         id INT PRIMARY KEY AUTO_INCREMENT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
 
-    await connection.query(`
+          await connection.query(`
       CREATE TABLE IF NOT EXISTS order_parts (
         id INT PRIMARY KEY AUTO_INCREMENT,
         order_id INT NOT NULL,
@@ -103,105 +226,8 @@ async function setupDatabase() {
         FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
       )
     `);
-
-    console.log("Добавляем данные...");
-
-    const products = [
-      threePlungerPumpLinks,
-      connectingRodLinks,
-      tractionUnitLinks,
-      waterworksLinks,
-      collectorLinks,
-      valveLinks,
-      valveTwoLinks,
-      plungerSealLinks,
-      sealPackageLinks,
-      housingSealLinks,
-      installingTheSensorIndicatorLinks,
-      installingTheSensorIndicatorTwoLinks,
-      plungerLubricationSystemLinks,
-      pumpLubricationSystemLinks,
-      planetaryCylindricalGearboxLinks,
-    ];
-
-    const productValues = products
-      .map(
-        (product) =>
-          `(${product.id}, '${product.src}', '${product.path}', ${
-            product.width
-          }, '${product.name}', ${product.drawing ?? "NULL"}, ${product.head} )`
-      )
-      .join(",");
-
-    if (productValues.length > 0) {
-      const productQuery = `
-        INSERT INTO products (id, src, path, width, name, drawing, head) 
-        VALUES ${productValues}
-        ON DUPLICATE KEY UPDATE 
-          src = VALUES(src), 
-          path = VALUES(path), 
-          width = VALUES(width), 
-          name = VALUES(name), 
-          drawing = VALUES(drawing),
-          head = VALUES(head)
-      `;
-      await connection.query(productQuery);
-    }
-
-    const parts = products.flatMap((product) =>
-      product.parts.map((part) => ({
-        product_id: product.id,
-        ...part,
-      }))
-    );
-
-    if (parts.length > 0) {
-      const partValues = parts
-        .map(
-          (part) =>
-            `(${part.product_id}, ${part.position}, '${part.name}', ${
-              part.designation ? `'${part.designation}'` : "NULL"
-            }, ${part.quantity || 1}, ${part.drawing ?? "NULL"}, 
-            ${part.positioningTop ?? "NULL"}, ${part.positioningLeft ?? "NULL"},
-            ${part.positioningTop2 ?? "NULL"}, ${
-              part.positioningLeft2 ?? "NULL"
-            },
-            ${part.positioningTop3 ?? "NULL"}, ${
-              part.positioningLeft3 ?? "NULL"
-            },
-            ${part.positioningTop4 ?? "NULL"}, ${
-              part.positioningLeft4 ?? "NULL"
-            },
-            ${part.positioningTop5 ?? "NULL"}, ${
-              part.positioningLeft5 ?? "NULL"
-            })`
-        )
-        .join(",");
-
-      const partQuery = `
-        INSERT INTO parts 
-          (product_id, position, name, designation, quantity, drawing, 
-          positioning_top, positioning_left, positioning_top2, positioning_left2, 
-          positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
-          positioning_top5, positioning_left5) 
-        VALUES ${partValues}
-        ON DUPLICATE KEY UPDATE 
-          name = VALUES(name), 
-          designation = VALUES(designation), 
-          quantity = VALUES(quantity), 
-          drawing = VALUES(drawing), 
-          positioning_top = VALUES(positioning_top), 
-          positioning_left = VALUES(positioning_left), 
-          positioning_top2 = VALUES(positioning_top2), 
-          positioning_left2 = VALUES(positioning_left2), 
-          positioning_top3 = VALUES(positioning_top3), 
-          positioning_left3 = VALUES(positioning_left3), 
-          positioning_top4 = VALUES(positioning_top4), 
-          positioning_left4 = VALUES(positioning_left4), 
-          positioning_top5 = VALUES(positioning_top5), 
-          positioning_left5 = VALUES(positioning_left5)
-      `;
-      await connection.query(partQuery);
+        }
+      }
     }
 
     console.log("Данные успешно загружены!");

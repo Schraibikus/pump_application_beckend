@@ -30,10 +30,21 @@ export interface PartItem {
   positioningLeft4?: number | null;
   positioningTop5?: number | null;
   positioningLeft5?: number | null;
+
+  alternativeSets?: {
+    [setName: string]: {
+      position: number;
+      name: string;
+      description?: string;
+      designation?: string;
+      quantity: number;
+      drawing?: number | null;
+    };
+  };
 }
 
 export interface Order {
-  orderId: number;
+  id: number;
   createdAt: string;
   parts: PartItem[];
 }

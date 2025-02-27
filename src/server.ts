@@ -1,11 +1,10 @@
 import express from "express";
 import { Request, Response } from "express";
-import asyncHandler from "express-async-handler";
-import { RequestHandler } from "express";
 import cors from "cors";
 import pool from "./config/db.js";
 import morgan from "morgan";
 import { ResultSetHeader } from "mysql2";
+import mysql from "mysql2/promise";
 import { Order } from "./temp/types.js";
 import { convertToCamelCase } from "./utils/caseConverter.js";
 
@@ -46,12 +45,94 @@ function startServer() {
   app.get("/api/products/:id/parts", async (req, res) => {
     const { id } = req.params;
     try {
-      const [rows] = await pool.query(
-        "SELECT * FROM parts WHERE product_id = ?",
+      // Запрос для получения основных свойств частей и их альтернативных наборов
+      const [rows] = await pool.query<mysql.RowDataPacket[]>(
+        `
+        SELECT 
+          p.id AS part_id,
+          p.product_id,
+          p.position,
+          p.name,
+          p.description,
+          p.designation,
+          p.quantity,
+          p.drawing,
+          p.positioning_top,
+          p.positioning_left,
+          p.positioning_top2,
+          p.positioning_left2,
+          p.positioning_top3,
+          p.positioning_left3,
+          p.positioning_top4,
+          p.positioning_left4,
+          p.positioning_top5,
+          p.positioning_left5,
+          pas.set_name,
+          pas.position AS alt_position,
+          pas.name AS alt_name,
+          pas.description AS alt_description,
+          pas.designation AS alt_designation,
+          pas.quantity AS alt_quantity,
+          pas.drawing AS alt_drawing
+        FROM parts p
+        LEFT JOIN part_alternative_sets pas ON p.id = pas.part_id
+        WHERE p.product_id = ?
+        `,
         [id]
       );
 
-      res.json(convertToCamelCase(rows)); // ✅ Преобразуем данные перед отправкой
+      // Группируем данные по частям и добавляем альтернативные наборы свойств
+      const groupedParts = (rows as mysql.RowDataPacket[]).reduce(
+        (acc: { [key: number]: any }, row) => {
+          if (!acc[row.part_id]) {
+            // Создаем объект части, если он еще не существует
+            acc[row.part_id] = {
+              id: row.part_id,
+              productId: row.product_id,
+              position: row.position,
+              name: row.name,
+              description: row.description,
+              designation: row.designation,
+              quantity: row.quantity,
+              drawing: row.drawing,
+              positioningTop: row.positioning_top,
+              positioningLeft: row.positioning_left,
+              positioningTop2: row.positioning_top2,
+              positioningLeft2: row.positioning_left2,
+              positioningTop3: row.positioning_top3,
+              positioningLeft3: row.positioning_left3,
+              positioningTop4: row.positioning_top4,
+              positioningLeft4: row.positioning_left4,
+              positioningTop5: row.positioning_top5,
+              positioningLeft5: row.positioning_left5,
+              alternativeSets: {}, // Инициализируем объект для альтернативных наборов
+            };
+          }
+
+          // Если есть альтернативный набор, добавляем его в часть
+          if (row.set_name) {
+            acc[row.part_id].alternativeSets[row.set_name] = {
+              position: row.alt_position,
+              name: row.alt_name,
+              description: row.alt_description,
+              designation: row.alt_designation,
+              quantity: row.alt_quantity,
+              drawing: row.alt_drawing,
+            };
+          }
+
+          return acc;
+        },
+        {}
+      );
+
+      // Преобразуем объект в массив
+      const result = Object.values(groupedParts);
+
+      // Преобразуем ключи в camelCase (если нужно)
+      const camelCaseResult = convertToCamelCase(result);
+
+      res.json(camelCaseResult); // Отправляем результат клиенту
     } catch (error: any) {
       console.error("Ошибка запроса:", error.message);
       res.status(500).json({ error: "Ошибка сервера" });

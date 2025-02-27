@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "migrate": "ts-node dist/temp/migrate.js"
   },
   "keywords": [],
   "author": "",
