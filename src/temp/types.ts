@@ -41,6 +41,7 @@ export interface PartItem {
       drawing?: number | null;
     };
   };
+  selectedSet?: string;
 }
 
 export interface Order {

@@ -1,4 +1,4 @@
-import mysql from "mysql2/promise";
+import mysql, { ResultSetHeader } from "mysql2/promise";
 import dotenv from "dotenv";
 import {
   threePlungerPumpLinks,
@@ -32,7 +32,7 @@ async function setupDatabase() {
   try {
     console.log("Создаём таблицы...");
 
-    // Создание таблиц (остаётся без изменений)
+    // Создание таблиц
     await connection.query(`
       CREATE TABLE IF NOT EXISTS products (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -65,6 +65,7 @@ async function setupDatabase() {
         positioning_left4 INT NULL,
         positioning_top5 INT NULL,
         positioning_left5 INT NULL,
+        selected_set VARCHAR(255) NULL, -- Добавляем поле selected_set
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
       )
     `);
@@ -84,7 +85,42 @@ async function setupDatabase() {
       )
     `);
 
-    // ... остальные таблицы ...
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS orders (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS order_parts (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        order_id INT NOT NULL,
+        part_id INT NOT NULL,
+        parent_product_id INT NOT NULL,
+        product_name VARCHAR(255) NOT NULL,
+        product_drawing VARCHAR(255) NULL,
+        position INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        description TEXT NULL,
+        designation VARCHAR(255) NULL,
+        quantity INT NOT NULL DEFAULT 1,
+        drawing INT NULL,
+        positioning_top INT NULL,
+        positioning_left INT NULL,
+        positioning_top2 INT NULL,
+        positioning_left2 INT NULL,
+        positioning_top3 INT NULL,
+        positioning_left3 INT NULL,
+        positioning_top4 INT NULL,
+        positioning_left4 INT NULL,
+        positioning_top5 INT NULL,
+        positioning_left5 INT NULL,
+        selected_set VARCHAR(255) NULL, -- Добавляем поле selected_set
+        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
+      )
+    `);
 
     console.log("Добавляем данные...");
 
@@ -135,7 +171,7 @@ async function setupDatabase() {
     for (const product of products) {
       for (const part of product.parts) {
         // Вставляем часть и получаем её ID
-        const [partResult] = await connection.query<mysql.ResultSetHeader>(
+        const [partResult] = await connection.query<ResultSetHeader>(
           `
           INSERT INTO parts 
             (product_id, position, name, description, designation, quantity, drawing, 
@@ -190,42 +226,6 @@ async function setupDatabase() {
             `,
             [alternativeSetValues]
           );
-
-          await connection.query(`
-      CREATE TABLE IF NOT EXISTS orders (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
-
-          await connection.query(`
-      CREATE TABLE IF NOT EXISTS order_parts (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        order_id INT NOT NULL,
-        part_id INT NOT NULL,
-        parent_product_id INT NOT NULL,
-        product_name VARCHAR(255) NOT NULL,
-        product_drawing VARCHAR(255) NULL,
-        position INT NOT NULL,
-        name VARCHAR(255) NOT NULL,
-        description TEXT NULL,
-        designation VARCHAR(255) NULL,
-        quantity INT NOT NULL DEFAULT 1,
-        drawing INT NULL,
-        positioningTop INT NULL,
-        positioningLeft INT NULL,
-        positioningTop2 INT NULL,
-        positioningLeft2 INT NULL,
-        positioningTop3 INT NULL,
-        positioningLeft3 INT NULL,
-        positioningTop4 INT NULL,
-        positioningLeft4 INT NULL,
-        positioningTop5 INT NULL,
-        positioningLeft5 INT NULL,
-        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-        FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE
-      )
-    `);
         }
       }
     }

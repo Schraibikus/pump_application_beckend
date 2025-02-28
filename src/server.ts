@@ -105,6 +105,7 @@ function startServer() {
               positioningLeft4: row.positioning_left4,
               positioningTop5: row.positioning_top5,
               positioningLeft5: row.positioning_left5,
+              selectedSet: row.selected_set, // Добавляем selectedSet
               alternativeSets: {}, // Инициализируем объект для альтернативных наборов
             };
           }
@@ -175,17 +176,19 @@ function startServer() {
         part.positioningLeft4 ?? null,
         part.positioningTop5 ?? null,
         part.positioningLeft5 ?? null,
+        part.selectedSet || null, // Добавляем selected_set
       ]);
 
       await pool.query(
         `INSERT INTO order_parts (
         order_id, part_id, parent_product_id, product_name, product_drawing,
         position, name, description, designation, quantity, drawing,
-        positioningTop, positioningLeft,
-        positioningTop2, positioningLeft2,
-        positioningTop3, positioningLeft3,
-        positioningTop4, positioningLeft4,
-        positioningTop5, positioningLeft5
+        positioning_top, positioning_left,
+        positioning_top2, positioning_left2,
+        positioning_top3, positioning_left3,
+        positioning_top4, positioning_left4,
+        positioning_top5, positioning_left5,
+        selected_set
       ) VALUES ?`,
         [partValues]
       );
@@ -257,7 +260,8 @@ function startServer() {
         order.parts = parts;
       }
       // console.log("Ответ сервера:", orders);
-      res.json(convertToCamelCase(orders)); // ✅ Конвертируем перед отправкой
+      const camelCaseOrders = convertToCamelCase(orders);
+      res.json(camelCaseOrders);
     } catch (error) {
       console.error("Ошибка при получении заказов:", error);
       res.status(500).json({ message: "Ошибка при получении заказов" });
