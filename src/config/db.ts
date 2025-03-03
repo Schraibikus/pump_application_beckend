@@ -1,19 +1,15 @@
-import * as mysql from "mysql2/promise";
-import * as dotenv from "dotenv";        
+import pkg from "pg";
+const { Pool } = pkg;
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = mysql.createPool({
+const pool = new Pool({
   host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
+  user: process.env.DB_USER || "postgres",
   password: process.env.DB_PASSWORD || "",
-  database: process.env.DB_NAME || "my_database",
-  charset: "utf8mb4",
-  port: 3306,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  database: process.env.DB_NAME || "pump_app_db",
+  port: Number(process.env.DB_PORT) || 5432,
 });
 
 export default pool;
-

@@ -1,4 +1,5 @@
-import mysql, { ResultSetHeader } from "mysql2/promise";
+import pkg from "pg";
+const { Pool } = pkg;
 import dotenv from "dotenv";
 import {
   threePlungerPumpLinks,
@@ -20,22 +21,23 @@ import {
 
 dotenv.config();
 
-const pool = mysql.createPool({
+const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT) || 5432,
 });
 
 async function setupDatabase() {
-  const connection = await pool.getConnection();
+  const client = await pool.connect();
   try {
     console.log("Создаём таблицы...");
 
     // Создание таблиц
-    await connection.query(`
+    await client.query(`
       CREATE TABLE IF NOT EXISTS products (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id SERIAL PRIMARY KEY,
         src VARCHAR(255),
         path VARCHAR(255),
         width INT,
@@ -45,9 +47,9 @@ async function setupDatabase() {
       )
     `);
 
-    await connection.query(`
+    await client.query(`
       CREATE TABLE IF NOT EXISTS parts (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id SERIAL PRIMARY KEY,
         product_id INT NOT NULL,
         position INT NOT NULL,
         name VARCHAR(255) NOT NULL,
@@ -70,9 +72,9 @@ async function setupDatabase() {
       )
     `);
 
-    await connection.query(`
+    await client.query(`
       CREATE TABLE IF NOT EXISTS part_alternative_sets (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id SERIAL PRIMARY KEY,
         part_id INT NOT NULL,
         set_name VARCHAR(255) NOT NULL,
         position INT NOT NULL,
@@ -85,16 +87,16 @@ async function setupDatabase() {
       )
     `);
 
-    await connection.query(`
+    await client.query(`
       CREATE TABLE IF NOT EXISTS orders (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id SERIAL PRIMARY KEY,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
 
-    await connection.query(`
+    await client.query(`
       CREATE TABLE IF NOT EXISTS order_parts (
-        id INT PRIMARY KEY AUTO_INCREMENT,
+        id SERIAL PRIMARY KEY,
         order_id INT NOT NULL,
         part_id INT NOT NULL,
         parent_product_id INT NOT NULL,
@@ -143,42 +145,45 @@ async function setupDatabase() {
     ];
 
     // Вставка изделий (products)
-    const productValues = products
-      .map(
-        (product) =>
-          `(${product.id}, '${product.src}', '${product.path}', ${
-            product.width
-          }, '${product.name}', ${product.drawing ?? "NULL"}, ${product.head})`
-      )
-      .join(",");
-
-    if (productValues.length > 0) {
-      const productQuery = `
+    for (const product of products) {
+      await client.query(
+        `
         INSERT INTO products (id, src, path, width, name, drawing, head) 
-        VALUES ${productValues}
-        ON DUPLICATE KEY UPDATE 
-          src = VALUES(src), 
-          path = VALUES(path), 
-          width = VALUES(width), 
-          name = VALUES(name), 
-          drawing = VALUES(drawing),
-          head = VALUES(head)
-      `;
-      await connection.query(productQuery);
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        ON CONFLICT (id) DO UPDATE 
+        SET 
+          src = EXCLUDED.src, 
+          path = EXCLUDED.path, 
+          width = EXCLUDED.width, 
+          name = EXCLUDED.name, 
+          drawing = EXCLUDED.drawing,
+          head = EXCLUDED.head
+        `,
+        [
+          product.id,
+          product.src,
+          product.path,
+          product.width,
+          product.name,
+          product.drawing || null,
+          product.head,
+        ]
+      );
     }
 
     // Вставка частей (parts) и альтернативных наборов (part_alternative_sets)
     for (const product of products) {
       for (const part of product.parts) {
         // Вставляем часть и получаем её ID
-        const [partResult] = await connection.query<ResultSetHeader>(
+        const { rows: partResult } = await client.query(
           `
           INSERT INTO parts 
             (product_id, position, name, description, designation, quantity, drawing, 
             positioning_top, positioning_left, positioning_top2, positioning_left2, 
             positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
             positioning_top5, positioning_left5) 
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
+          RETURNING id
           `,
           [
             product.id,
@@ -201,7 +206,7 @@ async function setupDatabase() {
           ]
         );
 
-        const partId = partResult.insertId;
+        const partId = partResult[0].id;
 
         // Вставляем альтернативные наборы для этой части
         if (part.alternativeSets) {
@@ -218,13 +223,22 @@ async function setupDatabase() {
             ]
           );
 
-          await connection.query(
+          await client.query(
             `
             INSERT INTO part_alternative_sets 
               (part_id, set_name, position, name, description, designation, quantity, drawing) 
-            VALUES ?
+            VALUES ${alternativeSetValues
+              .map(
+                (_, i) =>
+                  `($${i * 8 + 1}, $${i * 8 + 2}, $${i * 8 + 3}, $${
+                    i * 8 + 4
+                  }, $${i * 8 + 5}, $${i * 8 + 6}, $${i * 8 + 7}, $${
+                    i * 8 + 8
+                  })`
+              )
+              .join(", ")}
             `,
-            [alternativeSetValues]
+            alternativeSetValues.flat()
           );
         }
       }
@@ -234,7 +248,7 @@ async function setupDatabase() {
   } catch (error) {
     console.error("Ошибка при загрузке данных:", error);
   } finally {
-    connection.release();
+    client.release();
   }
 }
 

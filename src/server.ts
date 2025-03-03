@@ -1,10 +1,8 @@
-import express from "express";
-import { Request, Response } from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
-import pool from "./config/db.js";
+import format from "pg-format";
 import morgan from "morgan";
-import { ResultSetHeader } from "mysql2";
-import mysql from "mysql2/promise";
+import pool from "./config/db.js"; // Импортируем пул из db.ts
 import { Order } from "./temp/types.js";
 import { convertToCamelCase } from "./utils/caseConverter.js";
 
@@ -15,12 +13,12 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Подключение к MySQL и запуск сервера
+// Подключение к PostgreSQL и запуск сервера
 pool
-  .getConnection()
-  .then((conn) => {
-    console.log("✅ Подключение к MySQL успешно!");
-    conn.release();
+  .connect()
+  .then((client) => {
+    console.log("✅ Подключение к PostgreSQL успешно!");
+    client.release();
     startServer();
   })
   .catch((err) => {
@@ -32,9 +30,8 @@ function startServer() {
   // 🔹 Получение всех продуктов
   app.get("/api/products", async (_, res) => {
     try {
-      const [rows] = await pool.query("SELECT * FROM products");
+      const { rows } = await pool.query("SELECT * FROM products");
       res.json(rows);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error("Ошибка запроса:", error.message);
       res.status(500).json({ error: "Ошибка сервера" });
@@ -45,8 +42,7 @@ function startServer() {
   app.get("/api/products/:id/parts", async (req, res) => {
     const { id } = req.params;
     try {
-      // Запрос для получения основных свойств частей и их альтернативных наборов
-      const [rows] = await pool.query<mysql.RowDataPacket[]>(
+      const { rows } = await pool.query(
         `
         SELECT 
           p.id AS part_id,
@@ -76,64 +72,56 @@ function startServer() {
           pas.drawing AS alt_drawing
         FROM parts p
         LEFT JOIN part_alternative_sets pas ON p.id = pas.part_id
-        WHERE p.product_id = ?
+        WHERE p.product_id = $1
         `,
         [id]
       );
 
       // Группируем данные по частям и добавляем альтернативные наборы свойств
-      const groupedParts = (rows as mysql.RowDataPacket[]).reduce(
-        (acc: { [key: number]: any }, row) => {
-          if (!acc[row.part_id]) {
-            // Создаем объект части, если он еще не существует
-            acc[row.part_id] = {
-              id: row.part_id,
-              productId: row.product_id,
-              position: row.position,
-              name: row.name,
-              description: row.description,
-              designation: row.designation,
-              quantity: row.quantity,
-              drawing: row.drawing,
-              positioningTop: row.positioning_top,
-              positioningLeft: row.positioning_left,
-              positioningTop2: row.positioning_top2,
-              positioningLeft2: row.positioning_left2,
-              positioningTop3: row.positioning_top3,
-              positioningLeft3: row.positioning_left3,
-              positioningTop4: row.positioning_top4,
-              positioningLeft4: row.positioning_left4,
-              positioningTop5: row.positioning_top5,
-              positioningLeft5: row.positioning_left5,
-              selectedSet: row.selected_set, // Добавляем selectedSet
-              alternativeSets: {}, // Инициализируем объект для альтернативных наборов
-            };
-          }
+      const groupedParts = rows.reduce((acc: { [key: number]: any }, row) => {
+        if (!acc[row.part_id]) {
+          acc[row.part_id] = {
+            id: row.part_id,
+            productId: row.product_id,
+            position: row.position,
+            name: row.name,
+            description: row.description,
+            designation: row.designation,
+            quantity: row.quantity,
+            drawing: row.drawing,
+            positioningTop: row.positioning_top,
+            positioningLeft: row.positioning_left,
+            positioningTop2: row.positioning_top2,
+            positioningLeft2: row.positioning_left2,
+            positioningTop3: row.positioning_top3,
+            positioningLeft3: row.positioning_left3,
+            positioningTop4: row.positioning_top4,
+            positioningLeft4: row.positioning_left4,
+            positioningTop5: row.positioning_top5,
+            positioningLeft5: row.positioning_left5,
+            selectedSet: row.selected_set,
+            alternativeSets: {},
+          };
+        }
 
-          // Если есть альтернативный набор, добавляем его в часть
-          if (row.set_name) {
-            acc[row.part_id].alternativeSets[row.set_name] = {
-              position: row.alt_position,
-              name: row.alt_name,
-              description: row.alt_description,
-              designation: row.alt_designation,
-              quantity: row.alt_quantity,
-              drawing: row.alt_drawing,
-            };
-          }
+        if (row.set_name) {
+          acc[row.part_id].alternativeSets[row.set_name] = {
+            position: row.alt_position,
+            name: row.alt_name,
+            description: row.alt_description,
+            designation: row.alt_designation,
+            quantity: row.alt_quantity,
+            drawing: row.alt_drawing,
+          };
+        }
 
-          return acc;
-        },
-        {}
-      );
+        return acc;
+      }, {});
 
-      // Преобразуем объект в массив
       const result = Object.values(groupedParts);
-
-      // Преобразуем ключи в camelCase (если нужно)
       const camelCaseResult = convertToCamelCase(result);
 
-      res.json(camelCaseResult); // Отправляем результат клиенту
+      res.json(camelCaseResult);
     } catch (error: any) {
       console.error("Ошибка запроса:", error.message);
       res.status(500).json({ error: "Ошибка сервера" });
@@ -143,18 +131,19 @@ function startServer() {
   // 🔹 Создание заказа
   app.post("/api/orders", async (req: Request, res: Response) => {
     const { parts } = req.body as Order;
+    const client = await pool.connect();
 
     try {
-      await pool.query("START TRANSACTION");
+      await client.query("BEGIN");
 
       // Создаем заказ
-      const [orderResult] = await pool.query<ResultSetHeader>(
-        "INSERT INTO orders (created_at) VALUES (NOW())"
+      const { rows } = await client.query<{ id: number }>(
+        `INSERT INTO orders (created_at) VALUES (NOW()) RETURNING id`
       );
-      const orderId = orderResult.insertId;
+      const orderId = rows[0].id;
 
-      // Оптимизированная вставка деталей
-      const partValues = parts.map((part) => [
+      // Формируем данные для вставки
+      const rowsData = parts.map((part) => [
         orderId,
         part.id,
         part.parentProductId,
@@ -176,10 +165,11 @@ function startServer() {
         part.positioningLeft4 ?? null,
         part.positioningTop5 ?? null,
         part.positioningLeft5 ?? null,
-        part.selectedSet || null, // Добавляем selected_set
+        part.selectedSet || null,
       ]);
 
-      await pool.query(
+      // Форматируем запрос с помощью pg-format
+      const query = format(
         `INSERT INTO order_parts (
         order_id, part_id, parent_product_id, product_name, product_drawing,
         position, name, description, designation, quantity, drawing,
@@ -189,11 +179,12 @@ function startServer() {
         positioning_top4, positioning_left4,
         positioning_top5, positioning_left5,
         selected_set
-      ) VALUES ?`,
-        [partValues]
+      ) VALUES %L`,
+        rowsData
       );
 
-      await pool.query("COMMIT");
+      await client.query(query);
+      await client.query("COMMIT");
 
       res.status(201).json({
         orderId,
@@ -201,65 +192,70 @@ function startServer() {
         message: "Заказ успешно создан",
       });
     } catch (error) {
-      await pool.query("ROLLBACK");
+      await client.query("ROLLBACK");
       console.error("Ошибка создания заказа:", error);
       res.status(500).json({ error: "Ошибка сервера" });
+    } finally {
+      client.release();
     }
   });
 
   // 🔹 Удаление заказа
-  app.delete("/api/orders/:id", async (req: any, res: any) => {
-    const { id } = req.params;
+  app.delete(
+    "/api/orders/:id",
+    async (req: Request, res: Response): Promise<void> => {
+      const { id } = req.params;
 
-    if (!Number.isInteger(Number(id))) {
-      return res.status(400).json({ message: "Invalid order ID" });
-    }
-
-    const connection = await pool.getConnection();
-
-    try {
-      await connection.beginTransaction();
-
-      // Удаляем связанные части заказа
-      await connection.query("DELETE FROM order_parts WHERE order_id = ?", [
-        id,
-      ]);
-
-      // Удаляем сам заказ
-      const [result] = await connection.query<ResultSetHeader>(
-        "DELETE FROM orders WHERE id = ?",
-        [id]
-      );
-
-      if (result.affectedRows === 0) {
-        await connection.rollback();
-        return res.status(404).json({ message: "Order not found" });
+      if (!Number.isInteger(Number(id))) {
+        res.status(400).json({ message: "Invalid order ID" });
+        return; // Явно завершаем выполнение функции
       }
 
-      await connection.commit();
-      res.sendStatus(204); // Успешное удаление, нет содержимого для возврата
-    } catch (error: any) {
-      await connection.rollback();
-      console.error("Ошибка удаления заказа:", error.message);
-      res.status(500).json({ error: "Ошибка сервера" });
-    } finally {
-      connection.release(); // Всегда освобождаем соединение
+      const client = await pool.connect();
+
+      try {
+        await client.query("BEGIN");
+
+        // Удаляем связанные части заказа
+        await client.query("DELETE FROM order_parts WHERE order_id = $1", [id]);
+
+        // Удаляем сам заказ
+        const { rowCount } = await client.query(
+          "DELETE FROM orders WHERE id = $1",
+          [id]
+        );
+
+        if (rowCount === 0) {
+          await client.query("ROLLBACK");
+          res.status(404).json({ message: "Order not found" });
+          return; // Явно завершаем выполнение функции
+        }
+
+        await client.query("COMMIT");
+        res.sendStatus(204); // Успешное удаление, нет содержимого для возврата
+      } catch (error: any) {
+        await client.query("ROLLBACK");
+        console.error("Ошибка удаления заказа:", error.message);
+        res.status(500).json({ error: "Ошибка сервера" });
+      } finally {
+        client.release(); // Всегда освобождаем соединение
+      }
     }
-  });
+  );
 
   // 🔹 Получение всех заказов
   app.get("/api/orders", async (_: Request, res: Response) => {
     try {
-      const [orders]: any = await pool.query("SELECT * FROM orders");
+      const { rows: orders } = await pool.query("SELECT * FROM orders");
 
       for (const order of orders) {
-        const [parts]: any = await pool.query(
-          "SELECT * FROM order_parts WHERE order_id = ?",
+        const { rows: parts } = await pool.query(
+          "SELECT * FROM order_parts WHERE order_id = $1",
           [order.id]
         );
-        order.parts = parts;
+        order.parts = parts || [];
       }
-      // console.log("Ответ сервера:", orders);
+
       const camelCaseOrders = convertToCamelCase(orders);
       res.json(camelCaseOrders);
     } catch (error) {
@@ -269,7 +265,6 @@ function startServer() {
   });
 
   app.listen(PORT, () => {
-    // console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
     console.log(`🚀 Сервер запущен на ${PORT}`);
   });
 }
