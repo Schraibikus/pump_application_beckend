@@ -29,14 +29,24 @@ const pool = new Pool({
   port: Number(process.env.DB_PORT) || 5432,
 });
 
+const TABLE_NAMES = {
+  PRODUCTS: "products",
+  PARTS: "parts",
+  PART_ALTERNATIVE_SETS: "part_alternative_sets",
+  ORDERS: "orders",
+  ORDER_PARTS: "order_parts",
+};
+
 async function setupDatabase() {
   const client = await pool.connect();
   try {
     console.log("Создаём таблицы...");
 
+    await client.query("BEGIN"); // Начало транзакции
+
     // Создание таблиц
     await client.query(`
-      CREATE TABLE IF NOT EXISTS products (
+      CREATE TABLE IF NOT EXISTS ${TABLE_NAMES.PRODUCTS} (
         id SERIAL PRIMARY KEY,
         src VARCHAR(255),
         path VARCHAR(255),
@@ -48,7 +58,7 @@ async function setupDatabase() {
     `);
 
     await client.query(`
-      CREATE TABLE IF NOT EXISTS parts (
+      CREATE TABLE IF NOT EXISTS ${TABLE_NAMES.PARTS} (
         id SERIAL PRIMARY KEY,
         product_id INT NOT NULL,
         position INT NOT NULL,
@@ -67,13 +77,13 @@ async function setupDatabase() {
         positioning_left4 INT NULL,
         positioning_top5 INT NULL,
         positioning_left5 INT NULL,
-        selected_set VARCHAR(255) NULL, -- Добавляем поле selected_set
-        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+        selected_set VARCHAR(255) NULL,
+        FOREIGN KEY (product_id) REFERENCES ${TABLE_NAMES.PRODUCTS}(id) ON DELETE CASCADE
       )
     `);
 
     await client.query(`
-      CREATE TABLE IF NOT EXISTS part_alternative_sets (
+      CREATE TABLE IF NOT EXISTS ${TABLE_NAMES.PART_ALTERNATIVE_SETS} (
         id SERIAL PRIMARY KEY,
         part_id INT NOT NULL,
         set_name VARCHAR(255) NOT NULL,
@@ -88,14 +98,14 @@ async function setupDatabase() {
     `);
 
     await client.query(`
-      CREATE TABLE IF NOT EXISTS orders (
+      CREATE TABLE IF NOT EXISTS ${TABLE_NAMES.ORDERS} (
         id SERIAL PRIMARY KEY,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
 
     await client.query(`
-      CREATE TABLE IF NOT EXISTS order_parts (
+      CREATE TABLE IF NOT EXISTS ${TABLE_NAMES.ORDER_PARTS} (
         id SERIAL PRIMARY KEY,
         order_id INT NOT NULL,
         part_id INT NOT NULL,
@@ -124,6 +134,8 @@ async function setupDatabase() {
       )
     `);
 
+    // Остальные таблицы...
+
     console.log("Добавляем данные...");
 
     const products = [
@@ -144,11 +156,11 @@ async function setupDatabase() {
       planetaryCylindricalGearboxLinks,
     ];
 
-    // Вставка изделий (products)
+    // Вставка данных в products, parts, part_alternative_sets
     for (const product of products) {
       await client.query(
         `
-        INSERT INTO products (id, src, path, width, name, drawing, head) 
+        INSERT INTO ${TABLE_NAMES.PRODUCTS} (id, src, path, width, name, drawing, head) 
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         ON CONFLICT (id) DO UPDATE 
         SET 
@@ -169,15 +181,11 @@ async function setupDatabase() {
           product.head,
         ]
       );
-    }
 
-    // Вставка частей (parts) и альтернативных наборов (part_alternative_sets)
-    for (const product of products) {
       for (const part of product.parts) {
-        // Вставляем часть и получаем её ID
         const { rows: partResult } = await client.query(
           `
-          INSERT INTO parts 
+          INSERT INTO ${TABLE_NAMES.PARTS} 
             (product_id, position, name, description, designation, quantity, drawing, 
             positioning_top, positioning_left, positioning_top2, positioning_left2, 
             positioning_top3, positioning_left3, positioning_top4, positioning_left4, 
@@ -193,22 +201,21 @@ async function setupDatabase() {
             part.designation || null,
             part.quantity,
             part.drawing || null,
-            part.positioningTop || null,
-            part.positioningLeft || null,
-            part.positioningTop2 || null,
-            part.positioningLeft2 || null,
-            part.positioningTop3 || null,
-            part.positioningLeft3 || null,
-            part.positioningTop4 || null,
-            part.positioningLeft4 || null,
-            part.positioningTop5 || null,
-            part.positioningLeft5 || null,
+            part.positioningTop ?? null,
+            part.positioningLeft ?? null,
+            part.positioningTop2 ?? null,
+            part.positioningLeft2 ?? null,
+            part.positioningTop3 ?? null,
+            part.positioningLeft3 ?? null,
+            part.positioningTop4 ?? null,
+            part.positioningLeft4 ?? null,
+            part.positioningTop5 ?? null,
+            part.positioningLeft5 ?? null,
           ]
         );
 
         const partId = partResult[0].id;
 
-        // Вставляем альтернативные наборы для этой части
         if (part.alternativeSets) {
           const alternativeSetValues = Object.entries(part.alternativeSets).map(
             ([setName, setData]) => [
@@ -225,7 +232,7 @@ async function setupDatabase() {
 
           await client.query(
             `
-            INSERT INTO part_alternative_sets 
+            INSERT INTO ${TABLE_NAMES.PART_ALTERNATIVE_SETS} 
               (part_id, set_name, position, name, description, designation, quantity, drawing) 
             VALUES ${alternativeSetValues
               .map(
@@ -244,8 +251,10 @@ async function setupDatabase() {
       }
     }
 
+    await client.query("COMMIT"); // Подтверждение транзакции
     console.log("Данные успешно загружены!");
   } catch (error) {
+    await client.query("ROLLBACK"); // Откат транзакции в случае ошибки
     console.error("Ошибка при загрузке данных:", error);
   } finally {
     client.release();
