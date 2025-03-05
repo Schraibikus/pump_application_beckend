@@ -11,6 +11,8 @@ COPY package*.json ./
 # Устанавливаем все зависимости включая devDependencies
 RUN npm install --production=false
 
+RUN npm install -g ts-node
+
 # Копируем исходный код
 COPY . .
 
@@ -19,6 +21,4 @@ RUN npm run build
 
 EXPOSE 5000
 
-CMD ["./wait-for-db.sh", "db", "5432", "node", "dist/server.js"]
-
-
+CMD ["npm", "start"]
