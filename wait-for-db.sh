@@ -3,13 +3,15 @@
 
 host="$1"
 port="$2"
-shift 2  # Убираем host и port из аргументов
+shift 2
 cmd="$@"
 
+echo "Waiting for database ($host:$port)..."
+
 until nc -z "$host" "$port"; do
-  echo "Ждем, пока база данных $host:$port станет доступной..."
+  >&2 echo "Database is unavailable - sleeping"
   sleep 1
 done
 
-echo "База данных $host:$port доступна!"
+>&2 echo "Database is up - executing command"
 exec $cmd
